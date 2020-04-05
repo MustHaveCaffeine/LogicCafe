@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import Footer from './components/Footer/Footer'
 import classes from './App.module.css';
+import Layout from './components/Layout/Layout';
 
 class App extends Component{
   render() {
     return (
       <div className={classes.App}>
-        <div>
-          <p className="ui label">Must Have Caffeine !!!!!!</p>
-        </div>
-        <Footer/>
+        <Layout>
+          <p class="ui label">Must Have Caffeine !!!</p>
+        </Layout>
       </div>
     );
   }
