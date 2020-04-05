@@ -1,0 +1,13 @@
+.Heading {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.Spacing {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
