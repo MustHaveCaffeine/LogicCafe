@@ -4,6 +4,7 @@ import HomePage from './components/HomePage/HomePage';
 import ProblemsPage from './components/ProblemsPage/ProblemsPage';
 import { Switch, Route } from 'react-router-dom';
 import ProblemViewPage from './components/ProblemViewPage/ProblemViewPage';
+import ProblemPublish from './components/ProblemPublish/ProblemPublish';
 
 class App extends Component{
   render() {
@@ -14,6 +15,7 @@ class App extends Component{
             <Route path="/home" component={HomePage} />
             <Route path="/problems" exact component={ProblemsPage} />
             <Route path="/problems/1" exact component={ProblemViewPage} />
+            <Route path="/problems/new" exact component={ProblemPublish} />
           </Switch>
         </Layout>
     );
