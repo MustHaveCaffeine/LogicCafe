@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component , Fragment } from "react";
 import {
   withRouter
 } from 'react-router-dom'
@@ -17,7 +17,7 @@ class Toolbar extends Component {
     const { activeItem } = this.state;
 
     return (
-      <React.Fragment>
+      <Fragment>
         <div className={classes.Toolbar}>
           <Menu secondary>
             <Menu.Item
@@ -43,7 +43,7 @@ class Toolbar extends Component {
           </Menu>
         </div>
         <Divider />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
