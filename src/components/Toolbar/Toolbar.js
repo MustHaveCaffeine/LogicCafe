@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Divider, Dropdown, Menu } from "semantic-ui-react";
 import classes from "./Toolbar.module.css";
 
-export default class Toolbar extends Component {
+class Toolbar extends Component {
   state = { activeItem: "home" };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
@@ -11,7 +11,7 @@ export default class Toolbar extends Component {
     const { activeItem } = this.state;
 
     return (
-      <React.Fragment>
+      <Fragment>
         <div className={classes.Toolbar}>
           <Menu secondary>
             <Menu.Item
@@ -37,7 +37,9 @@ export default class Toolbar extends Component {
           </Menu>
         </div>
         <Divider />
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
+
+export default Toolbar;
