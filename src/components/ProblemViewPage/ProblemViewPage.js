@@ -1,28 +1,69 @@
-import React from 'react';
-import { Grid, Tab, Header } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { Grid, Tab, Button , Select} from 'semantic-ui-react';
+import classes from './ProblemViewPage.module.css';
+import ProblemDescription from '../ProblemDescription/ProblemDescription';
+import ProblemSubmissions from '../ProblemSubmissions/ProblemSubmissions';
+import CodeEditor from '../CodeEditor/CodeEditor';
 
 const panes = [
-    { menuItem: 'Description', render: () => <Tab.Pane>
-        Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.
-        A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
-    </Tab.Pane> },
-    { menuItem: 'Solution', render: () => <Tab.Pane>None</Tab.Pane> },
-    { menuItem: 'Submissions', render: () => <Tab.Pane>None</Tab.Pane> }
+  {
+    menuItem: "Description",
+    render: () => (
+      <Tab.Pane>
+        <ProblemDescription />
+      </Tab.Pane>
+    ),  
+  },
+  { menuItem: "Solution", render: () => <Tab.Pane>None</Tab.Pane> },
+  { menuItem: "Submissions", render: () => (
+        <Tab.Pane>
+            <ProblemSubmissions />
+        </Tab.Pane>
+   ) },
 ];
 
-const problemViewPage = (props) => {
-    return (
-      <Grid columns={2} padded>
-        <Grid.Column>
-            <Header as='h3'>17. Letter Combinations of a Phone Number</Header>
-            <Header as='h5' color='orange'>Medium</Header>
-            <Tab panes={panes}/>
-        </Grid.Column>
-        <Grid.Column>
-            
-        </Grid.Column>
-      </Grid>
-    );
+const languages = [
+    { key: 1, text: 'Java', value: 1 },
+    { key: 2, text: 'Python', value: 2 },
+    { key: 3, text: 'C++', value: 3 },
+    { key: 4, text: 'C', value: 4 },
+    { key: 5, text: 'Javascript', value: 5 },
+    { key: 6, text: 'Ruby', value: 6 },
+]
+
+class ProblemViewPage extends Component {
+
+    render () {
+
+        return (
+          <Grid columns={2} padded>
+            <Grid.Column>
+              <div>
+                <Tab panes={panes} />
+              </div>
+              <div className={classes.Margin}>
+                <Button.Group>
+                  <Button>Prev</Button>
+                  <Button.Or />
+                  <Button>Next</Button>
+                </Button.Group>
+              </div>
+            </Grid.Column>
+            <Grid.Column>
+              <div className={classes.Headers}>
+                <Select placeholder="Select Language" options={languages}/>
+                <div>
+                    <Button>Run Code</Button>
+                    <Button color='grey'>Submit</Button>
+                </div>
+              </div>
+              <div className={classes.Margin}>
+                <CodeEditor />
+              </div>
+            </Grid.Column>
+          </Grid>
+        );
+    }
 }
 
-export default problemViewPage;
+export default ProblemViewPage; 
