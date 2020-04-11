@@ -3,6 +3,7 @@ import Layout from './components/Layout/Layout';
 import HomePage from './components/HomePage/HomePage';
 import ProblemsPage from './components/ProblemsPage/ProblemsPage';
 import { Switch, Route } from 'react-router-dom';
+import ProblemViewPage from './components/ProblemViewPage/ProblemViewPage';
 
 class App extends Component{
   render() {
@@ -11,8 +12,8 @@ class App extends Component{
           <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/home" component={HomePage} />
-            <Route path="/problems" component={ProblemsPage} />
-            <Route path="/problems/:id" component={ProblemsPage} />
+            <Route path="/problems" exact component={ProblemsPage} />
+            <Route path="/problems/1" exact component={ProblemViewPage} />
           </Switch>
         </Layout>
     );
