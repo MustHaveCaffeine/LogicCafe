@@ -1,11 +1,17 @@
 import React, { Component } from "react";
+import {
+  withRouter
+} from 'react-router-dom'
 import { Divider, Dropdown, Menu } from "semantic-ui-react";
 import classes from "./Toolbar.module.css";
 
-export default class Toolbar extends Component {
+class Toolbar extends Component {
   state = { activeItem: "home" };
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name });
+    this.props.history.push('/' + name)
+  }
 
   render() {
     const { activeItem } = this.state;
@@ -41,3 +47,6 @@ export default class Toolbar extends Component {
     );
   }
 }
+
+
+export default withRouter(Toolbar)

@@ -3,9 +3,17 @@ import { Grid, Image, Header, Button } from 'semantic-ui-react';
 import classes from './HomePage.module.css';
 import image from '../../assets/images/homepage_image.jpg';
 
-const homepage = () => {
+import {
+    withRouter
+  } from 'react-router-dom'
+
+const homepage = ({ history }) => {
 
     const dummyText = "There are many variations of passages of Lorem Ipsum available,but the majority have suffered alteration ";
+
+    const routeToProblemList = () => {
+        history.push('/problems');
+    }
 
     return (
         <div>
@@ -16,7 +24,7 @@ const homepage = () => {
                         <Header as='h2'>Heading</Header>
                         <Header as='h3'>{dummyText}</Header>
                         <div className={classes.Spacing}>
-                            <Button primary>Start Practice</Button>
+                            <Button primary onClick={routeToProblemList}>Start Practice</Button>
                         </div>
                     </Grid.Column>
                     <Grid.Column>
@@ -27,7 +35,5 @@ const homepage = () => {
         </div>
     );
 }
-  
 
-
-export default homepage;
+export default withRouter(homepage);
