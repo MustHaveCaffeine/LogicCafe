@@ -15,7 +15,7 @@ class App extends Component {
                     <Route path='/home' component={HomePage} />
                     <Route path='/problems' exact component={ProblemsPage} />
                     <Route
-                        path='/problems/:slug'
+                        path='/problems/:id'
                         exact
                         component={ProblemViewPage}
                     />
