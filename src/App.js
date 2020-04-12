@@ -15,14 +15,14 @@ class App extends Component {
                     <Route path='/home' component={HomePage} />
                     <Route path='/problems' exact component={ProblemsPage} />
                     <Route
-                        path='/problems/:id'
-                        exact
-                        component={ProblemViewPage}
-                    />
-                    <Route
                         path='/problems/new'
                         exact
                         component={ProblemPublish}
+                    />
+                    <Route
+                        path='/problems/:id'
+                        exact
+                        component={ProblemViewPage}
                     />
                 </Switch>
             </Layout>
