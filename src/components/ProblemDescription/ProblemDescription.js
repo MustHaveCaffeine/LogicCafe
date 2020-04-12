@@ -10,9 +10,12 @@ class ProblemDescription extends Component {
         error: false,
     };
 
-    componentWillMount() {
+    componentDidMount() {
+
+        const problemId = this.props.match.params.id;
+
         axios
-            .get("/problem.json")
+            .get(`problem/${problemId}.json`)
             .then((respnse) => {
                 this.setState({ problem: respnse.data });
                 console.log(respnse.data);
@@ -22,7 +25,7 @@ class ProblemDescription extends Component {
                 console.log(error.message);
             });
         axios
-            .get("/problemDescription.json")
+            .get(`/problemDescription/${problemId}.json`)
             .then((respnse) => {
                 this.setState({
                     description: respnse.data,
@@ -79,9 +82,7 @@ class ProblemDescription extends Component {
                         {question.id + ". " + question.title}
                     </Header>
                     <div className={classes.Headers}>
-                        <div>
-                            {problemDifficulty}
-                        </div>
+                        <div>{problemDifficulty}</div>
                         <div>
                             <Header as='h6'> 3366</Header>
                         </div>

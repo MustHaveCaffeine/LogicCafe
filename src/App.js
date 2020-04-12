@@ -23,6 +23,8 @@ class App extends Component {
                         path='/problems/:id'
                         exact
                         component={ProblemViewPage}
+                        // render={(props) => <ProblemViewPage {...props} />}
+                        // render={({ match }) => <ProblemViewPage match={match} />}
                     />
                 </Switch>
             </Layout>
