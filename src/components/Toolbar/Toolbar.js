@@ -13,6 +13,17 @@ class Toolbar extends Component {
     this.props.history.push('/' + name)
   }
 
+  componentDidUpdate = (prevProps) => {
+    if(this.props.location !== prevProps.location) {
+      this.onRouteChange();
+    }
+  }
+
+  onRouteChange = () => {
+    const pathname = this.props.location.pathname.replace(/^(\/)/g, '');
+    this.setState({ activeItem: pathname });
+  }
+
   render() {
     const { activeItem } = this.state;
 
