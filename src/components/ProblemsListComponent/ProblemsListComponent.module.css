@@ -1,0 +1,14 @@
+.Margin {
+    margin-top: 100px;
+    margin-left: 100px;
+}
+
+.Back {
+    background-color: #404040;
+    margin-bottom: 5px;
+}
+
+.Pager {
+    margin-top: 20px;
+    text-align: center;
+}
