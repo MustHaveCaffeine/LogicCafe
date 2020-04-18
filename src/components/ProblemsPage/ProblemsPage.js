@@ -9,7 +9,6 @@ const endPoints = {
 };
 
 class ProblemsPage extends Component {
-    // static contextType = DataContext;
     state = { isFetching: true, problems: [] };
 
     componentDidMount() {
