@@ -1,89 +1,36 @@
 import React, { Component, Fragment } from "react";
 import { Divider, Header, Dimmer, Loader, Segment } from "semantic-ui-react";
+import { ProblemContext } from "../../providers/ProblemProvider";
 import classes from "./ProblemDescription.module.css";
-import axios from "../../axios-problem";
 
 class ProblemDescription extends Component {
-    state = {
-        problem: null,
-        description: null,
-        error: false,
+    static contextType = ProblemContext;
+
+    difficultyColorMap = {
+        Medium: "orange",
+        Easy: "green",
+        Hard: "red",
     };
 
-    componentDidMount() {
-        const problemId = this.props.match.params.id;
-
-        axios
-            .get(`problem/${problemId}.json`)
-            .then((respnse) => {
-                this.setState({ problem: respnse.data });
-                console.log(respnse.data);
-            })
-            .catch((error) => {
-                this.setState({ error: error.message });
-                console.log(error.message);
-            });
-        axios
-            .get(`/problemDescription/${problemId}.json`)
-            .then((respnse) => {
-                this.setState({
-                    description: respnse.data,
-                });
-                console.log(respnse.data);
-            })
-            .catch((error) => {
-                this.setState({ error: error.message });
-                console.log(error.message);
-            });
-    }
-
     render() {
-        let problem = this.state.error ? (
-            <p>Problem can't be loaded!</p>
-        ) : (
-            <Segment>
-                <Dimmer active inverted>
-                    <Loader inverted>Loading</Loader>
-                </Dimmer>
-            </Segment>
-        );
+        const problem = this.context && this.context.problem;
 
-        const question = {
-            ...this.state.problem,
-        };
+        if (problem && problem.description) {
+            const problemDifficulty = (
+                <Header
+                    as='h5'
+                    color={this.difficultyColorMap[problem.difficulty]}>
+                    {problem.difficulty}
+                </Header>
+            );
 
-        let problemDifficulty = null;
-
-        if (this.state.problem && this.state.description) {
-            if (question.difficulty === "Medium") {
-                problemDifficulty = (
-                    <Header as='h5' color='orange'>
-                        {question.difficulty}
-                    </Header>
-                );
-            } else if (question.difficulty === "Easy") {
-                problemDifficulty = (
-                    <Header as='h5' color='green'>
-                        {question.difficulty}
-                    </Header>
-                );
-            } else if (question.difficulty === "Hard") {
-                problemDifficulty = (
-                    <Header as='h5' color='red'>
-                        {question.difficulty}
-                    </Header>
-                );
-            }
-
-            problem = (
+            return (
                 <Fragment>
-                    <Header as='h3'>
-                        {question.id + ". " + question.title}
-                    </Header>
+                    <Header as='h3'>{problem.id + ". " + problem.title}</Header>
                     <div className={classes.Headers}>
                         <div>{problemDifficulty}</div>
                         <div>
-                            <Header as='h6'> 3366</Header>
+                            <Header as='h6'>3366</Header>
                         </div>
                         <div>
                             <Header as='h6'>379</Header>
@@ -96,22 +43,28 @@ class ProblemDescription extends Component {
                         </div>
                     </div>
                     <Divider />
-                    {this.state.description.description}
+                    {problem.description}
                     <Divider />
                     <div className={classes.Headers}>
-                        <p>Contibutor</p>
-                        <p>{question.author}</p>
+                        <p>Contributor</p>
+                        <p>{problem.author}</p>
                     </div>
                     <Divider />
                     <div className={classes.Headers}>
                         <p>Related Topics</p>
-                        <p>{question.tags}</p>
+                        <p>{problem.tags}</p>
                     </div>
                 </Fragment>
             );
         }
 
-        return <Fragment>{problem}</Fragment>;
+        return (
+            <Segment>
+                <Dimmer inverted active>
+                    <Loader inverted />
+                </Dimmer>
+            </Segment>
+        );
     }
 }
 

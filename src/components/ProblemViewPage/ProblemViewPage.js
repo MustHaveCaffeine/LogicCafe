@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Grid, Tab, Button, Select } from "semantic-ui-react";
+import { Grid, Tab, Button, Dropdown } from "semantic-ui-react";
+import { ProblemProvider } from "../../providers/ProblemProvider";
 import classes from "./ProblemViewPage.module.css";
 import ProblemDescription from "../ProblemDescription/ProblemDescription";
 import ProblemSubmissions from "../ProblemSubmissions/ProblemSubmissions";
@@ -12,7 +13,7 @@ class ProblemViewPage extends Component {
             menuItem: "Description",
             render: () => (
                 <Tab.Pane>
-                    <ProblemDescription {...this.props} />
+                    <ProblemDescription />
                 </Tab.Pane>
             ),
         },
@@ -27,73 +28,78 @@ class ProblemViewPage extends Component {
         },
     ];
 
-    languages = [
-        { key: 1, text: "Java", value: 1 },
-        { key: 2, text: "Python", value: 2 },
-        { key: 3, text: "C++", value: 3 },
-        { key: 4, text: "C", value: 4 },
-        { key: 5, text: "Javascript", value: 5 },
-        { key: 6, text: "Ruby", value: 6 },
-    ];
+    state = {
+        problem: {},
+        selectedLanguage: "java",
+    };
 
     componentDidMount() {
         const problemId = this.props.match.params.id;
-
+        const problem = {};
         axios
             .get(`problem/${problemId}.json`)
             .then((response) => {
-                this.setState({ problem: response.data });
-                console.log(response.data);
+                Object.assign(problem, response.data);
+                this.setState({ problem });
+                // console.log(this.state);
             })
             .catch((error) => {
                 this.setState({ error: error.message });
-                console.log(error.message);
+                console.error(error);
             });
         axios
             .get(`/problemDescription/${problemId}.json`)
             .then((response) => {
-                this.setState({
-                    description: response.data,
-                });
-                console.log(response.data);
+                Object.assign(problem, response.data);
+                this.setState({ problem });
+                // console.log(this.state);
             })
             .catch((error) => {
                 this.setState({ error: error.message });
-                console.log(error.message);
+                console.error(error);
             });
     }
 
+    changeLanguage = (_, data) => {
+        this.setState({ selectedLanguage: data.value });
+    };
+
+    changeCode = (value) => {
+        this.setState({ code: value });
+    };
+
     render() {
         return (
-            <Grid columns={2} padded>
-                <Grid.Column>
-                    <div>
-                        <Tab panes={this.panes} />
-                    </div>
-                    <div className={classes.Margin}>
-                        <Button.Group>
-                            <Button>Prev</Button>
-                            <Button.Or />
-                            <Button>Next</Button>
-                        </Button.Group>
-                    </div>
-                </Grid.Column>
-                <Grid.Column>
-                    <div className={classes.Headers}>
-                        <Select
-                            placeholder='Select Language'
-                            options={this.languages}
-                        />
+            <ProblemProvider value={this.state}>
+                <Grid columns={2} padded>
+                    <Grid.Column>
                         <div>
-                            <Button>Run Code</Button>
-                            <Button color='grey'>Submit</Button>
+                            <Tab panes={this.panes} />
                         </div>
-                    </div>
-                    <div className={classes.Margin}>
-                        <CodeEditor />
-                    </div>
-                </Grid.Column>
-            </Grid>
+                        <div className={classes.Margin}>
+                            <Button.Group>
+                                <Button>Prev</Button>
+                                <Button.Or />
+                                <Button>Next</Button>
+                            </Button.Group>
+                        </div>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <div className={classes.Headers}>
+                            <div>
+                                <Button>Run Code</Button>
+                                <Button color='grey'>Submit</Button>
+                            </div>
+                        </div>
+                        <div className={classes.Margin}>
+                            <CodeEditor
+                                onChange={this.changeCode}
+                                language={this.state.selectedLanguage}
+                            />
+                        </div>
+                    </Grid.Column>
+                </Grid>
+            </ProblemProvider>
         );
     }
 }
