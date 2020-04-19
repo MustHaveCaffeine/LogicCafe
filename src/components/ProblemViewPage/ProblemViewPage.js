@@ -4,28 +4,9 @@ import classes from "./ProblemViewPage.module.css";
 import ProblemDescription from "../ProblemDescription/ProblemDescription";
 import ProblemSubmissions from "../ProblemSubmissions/ProblemSubmissions";
 import CodeEditor from "../CodeEditor/CodeEditor";
+import axios from "../../axios-problem";
 
 class ProblemViewPage extends Component {
-    panes = [
-        {
-            menuItem: "Description",
-            render: () => (
-                <Tab.Pane>
-                    <ProblemDescription {...this.props} />
-                </Tab.Pane>
-            ),
-        },
-        { menuItem: "Solution", render: () => <Tab.Pane>None</Tab.Pane> },
-        {
-            menuItem: "Submissions",
-            render: () => (
-                <Tab.Pane>
-                    <ProblemSubmissions />
-                </Tab.Pane>
-            ),
-        },
-    ];
-
     panes = [
         {
             menuItem: "Description",
@@ -54,6 +35,33 @@ class ProblemViewPage extends Component {
         { key: 5, text: "Javascript", value: 5 },
         { key: 6, text: "Ruby", value: 6 },
     ];
+
+    componentDidMount() {
+        const problemId = this.props.match.params.id;
+
+        axios
+            .get(`problem/${problemId}.json`)
+            .then((response) => {
+                this.setState({ problem: response.data });
+                console.log(response.data);
+            })
+            .catch((error) => {
+                this.setState({ error: error.message });
+                console.log(error.message);
+            });
+        axios
+            .get(`/problemDescription/${problemId}.json`)
+            .then((response) => {
+                this.setState({
+                    description: response.data,
+                });
+                console.log(response.data);
+            })
+            .catch((error) => {
+                this.setState({ error: error.message });
+                console.log(error.message);
+            });
+    }
 
     render() {
         return (
