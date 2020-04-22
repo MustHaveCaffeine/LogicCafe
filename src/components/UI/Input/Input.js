@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Select } from "semantic-ui-react";
+import { Form, Dropdown } from "semantic-ui-react";
 import WithClass from "../../../hoc/WithClass";
 import classes from './Input.module.css';
 
@@ -20,11 +20,13 @@ const input = (props) => {
             break;
         case "dropdown":
             inputElement = (
-                <Select
+                <Dropdown
                     fluid
                     options={props.elementConfig.options}
                     placeholder={props.elementConfig.placeholder}
-                    onChange={props.changed}
+                    onChange={props.changedDropdown}
+                    selection
+                    value={props.value}
                 />
             );
             break;
