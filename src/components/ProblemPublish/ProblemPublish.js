@@ -65,6 +65,19 @@ class ProblemPublish extends Component {
         isProblemValid: false,
     };
 
+    difficultyChangedhandler = (event, data) => {
+        const updatedProblemForm = {
+            ...this.state.problemForm,
+        };
+        const updatedProblemElement = {
+            ...updatedProblemForm["difficulty"],
+        };
+        updatedProblemElement.value = data.value;
+        updatedProblemForm["difficulty"] = updatedProblemElement;
+        this.setState({problemForm: updatedProblemForm});
+        console.log(updatedProblemForm);
+    }
+
     inputChangedHandler = (event, inputIdentifier) => {
         const updatedProblemForm = {
             ...this.state.problemForm,
@@ -132,6 +145,8 @@ class ProblemPublish extends Component {
                                         formElement.id
                                     )
                                 }
+                                changedDropdown={this.difficultyChangedhandler}
+                                value={formElement.config.value}
                                 touched={formElement.config.touched}
                                 invalid={!formElement.config.valid}
                                 shouldValidate={formElement.config.validation}
