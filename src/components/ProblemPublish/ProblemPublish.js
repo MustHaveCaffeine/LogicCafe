@@ -4,6 +4,34 @@ import WithClass from "../../hoc/WithClass";
 import classes from "./ProblemPublish.module.css";
 import Input from "../UI/Input/Input";
 
+const tags_options = [
+    { key: "array", text: "Array", value: "Array" },
+    { key: "binarySearch", text: "Binary Search", value: "Binary Search" },
+    { key: "hashTable", text: "Hash Table", value: "Hash Table" },
+    { key: "linkedList", text: "Linked List", value: "Linked List" },
+    { key: "math", text: "Math", value: "Math" },
+    { key: "string", text: "String", value: "String" },
+    { key: "twoPointers", text: "Two Pointers", value: "Two Pointers" },
+    { key: "divideAndConquer", text: "Divide and Conquer", value: "Divide and Conquer" },
+    { key: "dynamicProgramming", text: "Dynamic Programming", value: "Dynamic Programming" },
+    { key: "backtracking", text: "Backtracking", value: "Backtracking" },
+    { key: "heap", text: "Heap", value: "Heap" },
+    { key: "stack", text: "Stack", value: "Stack" },
+    { key: "greedy", text: "Greedy", value: "Greedy" },
+    { key: "sort", text: "Sort", value: "Sort" },
+    { key: "bitManipulation", text: "Bit Manipulation", value: "Bit Manipulation" },
+    { key: "tree", text: "Tree", value: "ruby" },
+    { key: "bfs", text: "BFS", value: "BFS" },
+    { key: "dfs", text: "DFS", value: "DFS" },
+    { key: "unionFind", text: "Union Find", value: "Union Find" },
+    { key: "graph", text: "Graph", value: "Graph" },
+    { key: "design", text: "Design", value: "Design" },
+    { key: "topologicalSort", text: "Topological Sort", value: "Topological Sort" },
+    { key: "trie", text: "Trie", value: "Trie" },
+    { key: "queue", text: "Queue", value: "Queue" },
+    { key: "recursion", text: "Recursion", value: "Recursion" },
+];
+
 class ProblemPublish extends Component {
     state = {
         problemForm: {
@@ -49,15 +77,13 @@ class ProblemPublish extends Component {
                 touched: false,
             },
             tags: {
-                elementType: "text",
+                elementType: "multiple_dropdown",
                 elementConfig: {
-                    type: "text",
-                    placeholder: "Tags",
+                    placeholder: "Select Tags",
+                    options: tags_options
                 },
-                value: "",
-                validation: {
-                    required: true,
-                },
+                value: [],
+                validation: {},
                 valid: false,
                 touched: false,
             },
@@ -74,9 +100,22 @@ class ProblemPublish extends Component {
         };
         updatedProblemElement.value = data.value;
         updatedProblemForm["difficulty"] = updatedProblemElement;
-        this.setState({problemForm: updatedProblemForm});
+        this.setState({ problemForm: updatedProblemForm });
         console.log(updatedProblemForm);
-    }
+    };
+
+    tagsChangedhandler = (event, data) => {
+        const updatedProblemForm = {
+            ...this.state.problemForm,
+        };
+        const updatedProblemElement = {
+            ...updatedProblemForm["tags"],
+        };
+        updatedProblemElement.value = data.value;
+        updatedProblemForm["tags"] = updatedProblemElement;
+        this.setState({ problemForm: updatedProblemForm });
+        console.log(updatedProblemForm);
+    };
 
     inputChangedHandler = (event, inputIdentifier) => {
         const updatedProblemForm = {
@@ -146,7 +185,7 @@ class ProblemPublish extends Component {
                                     )
                                 }
                                 changedDropdown={this.difficultyChangedhandler}
-                                value={formElement.config.value}
+                                changedTags={this.tagsChangedhandler}
                                 touched={formElement.config.touched}
                                 invalid={!formElement.config.valid}
                                 shouldValidate={formElement.config.validation}
