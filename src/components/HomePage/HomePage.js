@@ -22,7 +22,7 @@ const homepage = ({ history }) => {
             <Header as="h2">Heading</Header>
             <Header as="h3">{dummyText}</Header>
             <div className={classes.Spacing}>
-              <Button primary onClick={routeToProblemList}>
+              <Button color="teal" onClick={routeToProblemList}>
                 Start Practice
               </Button>
             </div>
