@@ -1,5 +1,12 @@
 import React, { Component, Fragment } from "react";
-import { Divider, Header, Dimmer, Loader, Segment } from "semantic-ui-react";
+import {
+    Divider,
+    Header,
+    Dimmer,
+    Loader,
+    Segment,
+    Label,
+} from "semantic-ui-react";
 import classes from "./ProblemDescription.module.css";
 import axios from "../../axios-problem";
 
@@ -11,7 +18,6 @@ class ProblemDescription extends Component {
     };
 
     componentDidMount() {
-
         const problemId = this.props.match.params.id;
 
         axios
@@ -76,6 +82,12 @@ class ProblemDescription extends Component {
                 );
             }
 
+            const tags = question.tags.split(",").map((tag) => (
+                <Label as='a' color='teal' key={tag}>
+                    {tag}
+                </Label>
+            ));
+
             problem = (
                 <Fragment>
                     <Header as='h3'>
@@ -106,7 +118,7 @@ class ProblemDescription extends Component {
                     <Divider />
                     <div className={classes.Headers}>
                         <p>Related Topics</p>
-                        <p>{question.tags}</p>
+                        <Label.Group circular>{tags}</Label.Group>
                     </div>
                 </Fragment>
             );
