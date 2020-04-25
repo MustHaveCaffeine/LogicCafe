@@ -65,7 +65,7 @@ class ProblemViewPage extends Component {
     };
 
     changeCode = (value) => {
-        this.setState({ code: value });
+        this.code = value;
     };
 
     render() {
