@@ -21,7 +21,7 @@ class ProblemsListComponent extends Component {
 
         let problems = this.props.problems.map((prob) => (
             <ProblemTile
-                key={this.props.path}
+                key={problemid}
                 id={problemid++}
                 title={prob.title}
                 difficulty='Easy'
@@ -63,7 +63,6 @@ class ProblemsListComponent extends Component {
                 </Grid>
                 <div className={classes.Pager}>
                 <Pagination defaultActivePage={this.state.activePage}
-                    activePage={this.state.activePage}
                     totalPages={29}
                     onPageChange={this.handlePageChange} 
                     />

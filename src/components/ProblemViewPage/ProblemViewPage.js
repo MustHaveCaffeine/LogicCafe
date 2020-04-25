@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Tab, Button, Dropdown } from "semantic-ui-react";
+import { Grid, Tab, Button } from "semantic-ui-react";
 import { ProblemProvider } from "../../providers/ProblemProvider";
 import classes from "./ProblemViewPage.module.css";
 import ProblemDescription from "../ProblemDescription/ProblemDescription";

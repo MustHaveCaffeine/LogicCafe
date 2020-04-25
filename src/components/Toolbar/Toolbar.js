@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router-dom";
-import { Divider, Dropdown, Menu } from "semantic-ui-react";
+import { Dropdown, Menu } from "semantic-ui-react";
 import classes from "./Toolbar.module.css";
 
 class Toolbar extends Component {
@@ -57,7 +57,6 @@ class Toolbar extends Component {
                         </Menu.Menu>
                     </Menu>
                 </div>
-                <Divider />
             </Fragment>
         );
     }
