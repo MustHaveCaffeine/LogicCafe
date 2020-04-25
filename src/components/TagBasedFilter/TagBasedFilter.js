@@ -34,8 +34,8 @@ const filters = [
 const tagBasedFilter = (props) => {
 
     let tagFilters = filters.map((filter) => (
-        <Label as='a' color='teal'>
-            <Link to='/' key={filter}>
+        <Label as='a' color='teal' key={filter} >
+            <Link to='/'>
                 {filter}
             </Link>
         </Label>

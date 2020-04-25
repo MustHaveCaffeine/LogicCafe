@@ -15,7 +15,7 @@ class App extends Component {
                     <Route path='/home' component={HomePage} />
                     <Route path='/problems' exact component={ProblemsPage} />
                     <Route
-                        path='/problems/new'
+                        path='/problems/create-problem'
                         exact
                         component={ProblemPublish}
                     />
