@@ -1,5 +1,12 @@
 import React, { Component, Fragment } from "react";
-import { Divider, Header, Dimmer, Loader, Segment } from "semantic-ui-react";
+import {
+    Divider,
+    Header,
+    Dimmer,
+    Loader,
+    Segment,
+    Label,
+} from "semantic-ui-react";
 import { ProblemContext } from "../../providers/ProblemProvider";
 import classes from "./ProblemDescription.module.css";
 
@@ -15,7 +22,8 @@ class ProblemDescription extends Component {
     render() {
         const problem = this.context && this.context.problem;
 
-        if (problem && problem.description) {
+        if (problem && problem.description && problem.tags) {
+            console.log(problem);
             const problemDifficulty = (
                 <Header
                     as='h5'
@@ -23,6 +31,12 @@ class ProblemDescription extends Component {
                     {problem.difficulty}
                 </Header>
             );
+
+            const tags = problem.tags.split(",").map((tag) => (
+                <Label as='a' color='teal' key={tag}>
+                    {tag}
+                </Label>
+            ));
 
             return (
                 <Fragment>
@@ -52,7 +66,7 @@ class ProblemDescription extends Component {
                     <Divider />
                     <div className={classes.Headers}>
                         <p>Related Topics</p>
-                        <p>{problem.tags}</p>
+                        <Label.Group circular>{tags}</Label.Group>
                     </div>
                 </Fragment>
             );
