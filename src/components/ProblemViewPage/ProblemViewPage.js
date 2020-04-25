@@ -78,17 +78,17 @@ class ProblemViewPage extends Component {
                         </div>
                         <div className={classes.Margin}>
                             <Button.Group>
-                                <Button>Prev</Button>
+                                <Button color='teal'>Prev</Button>
                                 <Button.Or />
-                                <Button>Next</Button>
+                                <Button color='teal'>Next</Button>
                             </Button.Group>
                         </div>
                     </Grid.Column>
                     <Grid.Column>
                         <div className={classes.Headers}>
                             <div>
-                                <Button>Run Code</Button>
-                                <Button color='grey'>Submit</Button>
+                                <Button color='grey'>Run Code</Button>
+                                <Button color='teal'>Submit</Button>
                             </div>
                         </div>
                         <div className={classes.Margin}>
