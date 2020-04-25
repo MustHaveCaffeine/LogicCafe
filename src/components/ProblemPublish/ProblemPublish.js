@@ -99,6 +99,7 @@ class ProblemPublish extends Component {
             ...updatedProblemForm["difficulty"],
         };
         updatedProblemElement.value = data.value;
+        updatedProblemElement.touched = true;
         updatedProblemForm["difficulty"] = updatedProblemElement;
         this.setState({ problemForm: updatedProblemForm });
         console.log(updatedProblemForm);
@@ -112,6 +113,7 @@ class ProblemPublish extends Component {
             ...updatedProblemForm["tags"],
         };
         updatedProblemElement.value = data.value;
+        updatedProblemElement.touched = true;
         updatedProblemForm["tags"] = updatedProblemElement;
         this.setState({ problemForm: updatedProblemForm });
         console.log(updatedProblemForm);
@@ -195,7 +197,7 @@ class ProblemPublish extends Component {
                     <Form.Field>
                         <Checkbox label='I agree to the Terms and Conditions' />
                     </Form.Field>
-                    <Button type='submit' disabled={!this.state.isProblemValid}>
+                    <Button type='submit' disabled={!this.state.isProblemValid} color="teal">
                         Submit
                     </Button>
                     <Button color='grey'>Test Case Upload</Button>
