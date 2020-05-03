@@ -27,7 +27,7 @@ class CodeEditor extends Component {
     };
 
     changeLanguage = (_, data) => {
-        this.setState({ selectedLanguage: data.value });
+        this.code = data.value;
     };
 
     render() {
