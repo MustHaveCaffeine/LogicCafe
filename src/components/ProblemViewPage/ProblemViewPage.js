@@ -1,69 +1,107 @@
-import React, { Component } from 'react';
-import { Grid, Tab, Button , Select} from 'semantic-ui-react';
-import classes from './ProblemViewPage.module.css';
-import ProblemDescription from '../ProblemDescription/ProblemDescription';
-import ProblemSubmissions from '../ProblemSubmissions/ProblemSubmissions';
-import CodeEditor from '../CodeEditor/CodeEditor';
+import React, { Component } from "react";
+import { Grid, Tab, Button } from "semantic-ui-react";
+import { ProblemProvider } from "../../providers/ProblemProvider";
+import classes from "./ProblemViewPage.module.css";
+import ProblemDescription from "../ProblemDescription/ProblemDescription";
+import ProblemSubmissions from "../ProblemSubmissions/ProblemSubmissions";
+import CodeEditor from "../CodeEditor/CodeEditor";
+import axios from "../../axios-problem";
 
 class ProblemViewPage extends Component {
-
     panes = [
         {
-          menuItem: "Description",
-          render: () => (
-            <Tab.Pane>
-              <ProblemDescription {...this.props} />
-            </Tab.Pane>
-          ),  
+            menuItem: "Description",
+            render: () => (
+                <Tab.Pane>
+                    <ProblemDescription />
+                </Tab.Pane>
+            ),
         },
         { menuItem: "Solution", render: () => <Tab.Pane>None</Tab.Pane> },
-        { menuItem: "Submissions", render: () => (
-              <Tab.Pane>
-                  <ProblemSubmissions />
-              </Tab.Pane>
-         ) },
-      ];
-      
-    languages = [
-          { key: 1, text: 'Java', value: 1 },
-          { key: 2, text: 'Python', value: 2 },
-          { key: 3, text: 'C++', value: 3 },
-          { key: 4, text: 'C', value: 4 },
-          { key: 5, text: 'Javascript', value: 5 },
-          { key: 6, text: 'Ruby', value: 6 },
-      ]
+        {
+            menuItem: "Submissions",
+            render: () => (
+                <Tab.Pane>
+                    <ProblemSubmissions />
+                </Tab.Pane>
+            ),
+        },
+    ];
 
-    render () {
+    state = {
+        problem: {},
+        selectedLanguage: "java",
+    };
 
+    componentDidMount() {
+        const problemId = this.props.match.params.id;
+        const problem = {};
+        axios
+            .get(`problem/${problemId}.json`)
+            .then((response) => {
+                Object.assign(problem, response.data);
+                this.setState({ problem });
+                // console.log(this.state);
+            })
+            .catch((error) => {
+                this.setState({ error: error.message });
+                console.error(error);
+            });
+        axios
+            .get(`/problemDescription/${problemId}.json`)
+            .then((response) => {
+                Object.assign(problem, response.data);
+                this.setState({ problem });
+                // console.log(this.state);
+            })
+            .catch((error) => {
+                this.setState({ error: error.message });
+                console.error(error);
+            });
+    }
+
+    changeLanguage = (_, data) => {
+        this.setState({ selectedLanguage: data.value });
+    };
+
+    changeCode = (value) => {
+        this.setState({ code: value });
+    };
+
+    render() {
         return (
-          <Grid columns={2} padded>
-            <Grid.Column>
-              <div>
-                <Tab panes={this.panes} />
-              </div>
-              <div className={classes.Margin}>
-                <Button.Group>
-                  <Button color="teal">Prev</Button>
-                  <Button.Or />
-                  <Button color="teal">Next</Button>
-                </Button.Group>
-              </div>
-            </Grid.Column>
-            <Grid.Column>
-              <div className={classes.Headers}>
-                <Select placeholder="Select Language" options={this.languages}/>
-                <div>
-                    <Button color="grey">Run Code</Button>
-                    <Button color="teal">Submit</Button>
-                </div>
-              </div>
-              <div className={classes.Margin}>
-                <CodeEditor />
-              </div>
-            </Grid.Column>
-          </Grid>
+            <ProblemProvider value={this.state}>
+                <Grid columns={2} padded>
+                    <Grid.Column>
+                        <div>
+                            <Tab panes={this.panes} />
+                        </div>
+                        <div className={classes.Margin}>
+                            <Button.Group>
+                                <Button color='teal'>Prev</Button>
+                                <Button.Or />
+                                <Button color='teal'>Next</Button>
+                            </Button.Group>
+                        </div>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <div className={classes.Headers}>
+                            <div>
+                                <Button color='grey'>Run Code</Button>
+                                <Button color='teal'>Submit</Button>
+                            </div>
+                        </div>
+                        <div className={classes.Margin}>
+                            <CodeEditor
+                                onChange={this.changeCode}
+                                language={this.state.selectedLanguage}
+                            />
+                        </div>
+                    </Grid.Column>
+                </Grid>
+            </ProblemProvider>
         );
     }
 }
 
-export default ProblemViewPage; 
+export default ProblemViewPage;
