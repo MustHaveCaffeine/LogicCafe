@@ -33,6 +33,7 @@ class CodeEditor extends Component {
     render() {
         const editorProps = {
             width: "100%",
+            height: "350px",
             theme: "xcode",
             mode: this.props.language,
             onChange: this.props.onChange,
