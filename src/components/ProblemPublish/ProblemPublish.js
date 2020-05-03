@@ -12,21 +12,37 @@ const tags_options = [
     { key: "math", text: "Math", value: "Math" },
     { key: "string", text: "String", value: "String" },
     { key: "twoPointers", text: "Two Pointers", value: "Two Pointers" },
-    { key: "divideAndConquer", text: "Divide and Conquer", value: "Divide and Conquer" },
-    { key: "dynamicProgramming", text: "Dynamic Programming", value: "Dynamic Programming" },
+    {
+        key: "divideAndConquer",
+        text: "Divide and Conquer",
+        value: "Divide and Conquer",
+    },
+    {
+        key: "dynamicProgramming",
+        text: "Dynamic Programming",
+        value: "Dynamic Programming",
+    },
     { key: "backtracking", text: "Backtracking", value: "Backtracking" },
     { key: "heap", text: "Heap", value: "Heap" },
     { key: "stack", text: "Stack", value: "Stack" },
     { key: "greedy", text: "Greedy", value: "Greedy" },
     { key: "sort", text: "Sort", value: "Sort" },
-    { key: "bitManipulation", text: "Bit Manipulation", value: "Bit Manipulation" },
+    {
+        key: "bitManipulation",
+        text: "Bit Manipulation",
+        value: "Bit Manipulation",
+    },
     { key: "tree", text: "Tree", value: "ruby" },
     { key: "bfs", text: "BFS", value: "BFS" },
     { key: "dfs", text: "DFS", value: "DFS" },
     { key: "unionFind", text: "Union Find", value: "Union Find" },
     { key: "graph", text: "Graph", value: "Graph" },
     { key: "design", text: "Design", value: "Design" },
-    { key: "topologicalSort", text: "Topological Sort", value: "Topological Sort" },
+    {
+        key: "topologicalSort",
+        text: "Topological Sort",
+        value: "Topological Sort",
+    },
     { key: "trie", text: "Trie", value: "Trie" },
     { key: "queue", text: "Queue", value: "Queue" },
     { key: "recursion", text: "Recursion", value: "Recursion" },
@@ -80,7 +96,7 @@ class ProblemPublish extends Component {
                 elementType: "multiple_dropdown",
                 elementConfig: {
                     placeholder: "Select Tags",
-                    options: tags_options
+                    options: tags_options,
                 },
                 value: [],
                 validation: {},
@@ -100,9 +116,20 @@ class ProblemPublish extends Component {
         };
         updatedProblemElement.value = data.value;
         updatedProblemElement.touched = true;
+        updatedProblemElement.valid = this.checkValidity(
+            updatedProblemElement.value,
+            updatedProblemElement.validation
+        );
         updatedProblemForm["difficulty"] = updatedProblemElement;
-        this.setState({ problemForm: updatedProblemForm });
-        console.log(updatedProblemForm);
+        let problemIsValid = true;
+        for (let inputIdentifier in updatedProblemForm) {
+            problemIsValid =
+                updatedProblemForm[inputIdentifier].valid && problemIsValid;
+        }
+        this.setState({
+            problemForm: updatedProblemForm,
+            isProblemValid: problemIsValid,
+        });
     };
 
     tagsChangedhandler = (event, data) => {
@@ -114,9 +141,20 @@ class ProblemPublish extends Component {
         };
         updatedProblemElement.value = data.value;
         updatedProblemElement.touched = true;
+        updatedProblemElement.valid = this.checkValidity(
+            updatedProblemElement.value,
+            updatedProblemElement.validation
+        );
         updatedProblemForm["tags"] = updatedProblemElement;
-        this.setState({ problemForm: updatedProblemForm });
-        console.log(updatedProblemForm);
+        let problemIsValid = true;
+        for (let inputIdentifier in updatedProblemForm) {
+            problemIsValid =
+                updatedProblemForm[inputIdentifier].valid && problemIsValid;
+        }
+        this.setState({
+            problemForm: updatedProblemForm,
+            isProblemValid: problemIsValid,
+        });
     };
 
     inputChangedHandler = (event, inputIdentifier) => {
@@ -137,15 +175,12 @@ class ProblemPublish extends Component {
         let problemIsValid = true;
         for (let inputIdentifier in updatedProblemForm) {
             problemIsValid =
-                updatedProblemForm[inputIdentifier].value && problemIsValid;
+                updatedProblemForm[inputIdentifier].valid && problemIsValid;
         }
         this.setState({
             problemForm: updatedProblemForm,
             isProblemValid: problemIsValid,
         });
-        console.log(this.state);
-        console.log(updatedProblemForm);
-        console.log(this.state.isProblemValid);
     };
 
     checkValidity = (value, rules) => {
@@ -197,7 +232,10 @@ class ProblemPublish extends Component {
                     <Form.Field>
                         <Checkbox label='I agree to the Terms and Conditions' />
                     </Form.Field>
-                    <Button type='submit' disabled={!this.state.isProblemValid} color="teal">
+                    <Button
+                        type='submit'
+                        disabled={!this.state.isProblemValid}
+                        color='teal'>
                         Submit
                     </Button>
                     <Button color='grey'>Test Case Upload</Button>

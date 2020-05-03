@@ -6,9 +6,8 @@ import classes from "./Toolbar.module.css";
 class Toolbar extends Component {
     state = { activeItem: "home" };
 
-    handleItemClick = (e, { name }) => {
-        this.setState({ activeItem: name });
-        this.props.history.push("/" + name);
+    componentDidMount = () => {
+        this.onRouteChange();
     };
 
     componentDidUpdate = (prevProps) => {
@@ -17,8 +16,13 @@ class Toolbar extends Component {
         }
     };
 
+    handleItemClick = (e, { name }) => {
+        this.props.history.push("/" + name);
+    };
+
     onRouteChange = () => {
-        const pathname = this.props.location.pathname.replace(/^(\/)/g, "");
+        const pathname =
+            this.props.location.pathname.replace(/^(\/)/g, "") || "home";
         this.setState({ activeItem: pathname });
     };
 
