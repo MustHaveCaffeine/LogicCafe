@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import classes from './Layout.module.css';
-import Footer from '../Footer/Footer'
-import Toolbar from '../Toolbar/Toolbar'
+import Footer from '../../components/Footer/Footer'
+import Toolbar from '../../components/Toolbar/Toolbar'
 
 const layout = (props) => {
     return (

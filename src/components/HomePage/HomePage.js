@@ -2,7 +2,6 @@ import React from "react";
 import { Grid, Image, Header, Button } from "semantic-ui-react";
 import classes from "./HomePage.module.css";
 import image from "../../assets/images/back_image.png";
-
 import { withRouter } from "react-router-dom";
 
 const homepage = ({ history }) => {
@@ -16,7 +15,7 @@ const homepage = ({ history }) => {
 
     return (
         <div>
-            <div className={classes.Heading}>LogiCafe</div>
+            <div className={classes.Heading}>Logic Cafe</div>
             <div className={classes.Spacing}>
                 <Grid columns={2} padded>
                     <Grid.Column>

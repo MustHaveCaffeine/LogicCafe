@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Loader, Grid, Header, Pagination } from "semantic-ui-react";
 import ProblemTile from "../ProblemTile/ProblemTile";
 import classes from "./ProblemsListComponent.module.css";
-import WithClass from "../../hoc/WithClass";
+import WithClass from "../../hoc/WithClass/WithClass";
 import TagBasedFilter from "../TagBasedFilter/TagBasedFilter";
 
 class ProblemsListComponent extends Component {
