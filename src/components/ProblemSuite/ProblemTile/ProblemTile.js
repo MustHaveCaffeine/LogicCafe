@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
-import WithClass from "../../hoc/WithClass";
+import WithClass from "../../../hoc/WithClass/WithClass";
 import classes from "./ProblemTile.module.css";
 import { Link } from "react-router-dom";
 
