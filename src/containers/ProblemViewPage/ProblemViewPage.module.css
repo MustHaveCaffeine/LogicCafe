@@ -1,0 +1,9 @@
+.Headers {
+    display: flex;
+    margin-left: 10px;
+    justify-content: space-between;
+}
+
+.Margin {
+    padding: 10px;
+}
