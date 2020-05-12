@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Header, Form, Checkbox, Button } from "semantic-ui-react";
-import WithClass from "../../hoc/WithClass";
+import WithClass from "../../../hoc/WithClass/WithClass";
 import classes from "./ProblemPublish.module.css";
-import Input from "../UI/Input/Input";
+import Input from "../../UI/Input/Input";
 
 const tags_options = [
     { key: "array", text: "Array", value: "Array" },

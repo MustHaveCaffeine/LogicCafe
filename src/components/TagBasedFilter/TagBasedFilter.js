@@ -1,5 +1,5 @@
 import React from "react";
-import WithClass from "../../hoc/WithClass";
+import WithClass from "../../hoc/WithClass/WithClass";
 import { Label } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
