@@ -7,7 +7,7 @@ import {
     Segment,
     Label,
 } from "semantic-ui-react";
-import { ProblemContext } from "../../providers/ProblemProvider";
+import { ProblemContext } from "../../../providers/ProblemProvider/ProblemProvider";
 import classes from "./ProblemDescription.module.css";
 
 class ProblemDescription extends Component {
