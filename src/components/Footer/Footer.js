@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Footer.module.css";
 import { Menu, Divider } from "semantic-ui-react";
-import WithClass from "../../hoc/WithClass";
+import WithClass from "../../hoc/WithClass/WithClass";
 
 const footer = (props) => {
     return (

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Grid, Tab, Button } from "semantic-ui-react";
-import { ProblemProvider } from "../../providers/ProblemProvider";
+import { ProblemProvider } from "../../providers/ProblemProvider/ProblemProvider";
 import classes from "./ProblemViewPage.module.css";
-import ProblemDescription from "../ProblemDescription/ProblemDescription";
-import ProblemSubmissions from "../ProblemSubmissions/ProblemSubmissions";
-import CodeEditor from "../CodeEditor/CodeEditor";
+import ProblemDescription from "../../components/Problem/ProblemDescription/ProblemDescription";
+import ProblemSubmissions from "../../components/Problem/ProblemSubmissions/ProblemSubmissions";
+import CodeEditor from "../../components/CodeEditor/CodeEditor";
 import axios from "../../axios-problem";
 
 class ProblemViewPage extends Component {
