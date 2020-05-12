@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Layout from "./components/Layout/Layout";
+import Layout from "./containers/Layout/Layout";
 import HomePage from "./components/HomePage/HomePage";
-import ProblemsPage from "./components/ProblemsPage/ProblemsPage";
+import ProblemsPage from "./containers/ProblemsPage/ProblemsPage";
 import { Switch, Route } from "react-router-dom";
-import ProblemViewPage from "./components/ProblemViewPage/ProblemViewPage";
+import ProblemViewPage from "./containers/ProblemViewPage/ProblemViewPage";
 import ProblemPublish from "./components/Publish/ProblemPublish/ProblemPublish";
 import SignUp from './components/Authentication/SignUp/SignUp';
 
