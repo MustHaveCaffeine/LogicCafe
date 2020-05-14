@@ -78,15 +78,15 @@ class ProblemViewPage extends Component {
                             <Tab panes={this.panes} />
                         </div>
                         <div className={classes.Margin}>
-                            <Button btnType='primary'>Prev</Button>
-                            <Button btnType='primary'>Next</Button>
+                            <Button>Prev</Button>
+                            <Button>Next</Button>
                         </div>
                     </Grid.Column>
                     <Grid.Column>
                         <div className={classes.Headers}>
                             <div>
                                 <Button btnType='secondary'>Run Code</Button>
-                                <Button btnType='primary'>Submit</Button>
+                                <Button>Submit</Button>
                             </div>
                         </div>
                         <div className={classes.Margin}>

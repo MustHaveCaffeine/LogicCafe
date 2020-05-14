@@ -235,7 +235,6 @@ class ProblemPublish extends Component {
                     </Form.Field>
                     <Button btnType='secondary'>Test Case Upload</Button>
                     <Button
-                        btnType='primary'
                         disabled={!this.state.isProblemValid}>
                         Submit
                     </Button>
