@@ -1,7 +1,7 @@
 import React from "react";
 import WithClass from "../../hoc/WithClass/WithClass";
-import { Label } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import Label from "../UI/Label/Label";
 
 const filters = [
     "Array",
@@ -32,20 +32,13 @@ const filters = [
 ];
 
 const tagBasedFilter = (props) => {
-
     let tagFilters = filters.map((filter) => (
-        <Label as='a' color='teal' key={filter} >
-            <Link to='/'>
-                {filter}
-            </Link>
+        <Label key={filter}>
+            <Link to='/'>{filter}</Link>
         </Label>
     ));
 
-    return (
-        <WithClass>
-            <Label.Group circular>{tagFilters}</Label.Group>
-        </WithClass>
-    );
+    return <WithClass>{tagFilters}</WithClass>;
 };
 
 export default tagBasedFilter;
