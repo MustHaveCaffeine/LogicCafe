@@ -5,7 +5,9 @@ const Button = styled.button`
     margin: 5px;
     padding: 10px 20px;
     font-weight: 700;
-    opacity: ${props => props.disabled ? 0.25 : 1};
+    box-shadow: none;
+    outline: none;
+    opacity: ${(props) => (props.disabled ? 0.25 : 1)};
     border: 2px solid
         ${(props) => (props.btnType === "primary" ? "#F08700" : "#FFCF44")};
     color: ${(props) =>
@@ -17,7 +19,7 @@ const Button = styled.button`
         background-color: ${(props) =>
             props.btnType === "primary" ? "#CD6C00" : "#FFC53A"};
         border: 2px solid
-        ${(props) => (props.btnType === "primary" ? "#CD6C00" : "#FFC53A")};
+            ${(props) => (props.btnType === "primary" ? "#CD6C00" : "#FFC53A")};
     }
 `;
 

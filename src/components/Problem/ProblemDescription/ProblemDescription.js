@@ -9,6 +9,7 @@ import {
 import { ProblemContext } from "../../../providers/ProblemProvider/ProblemProvider";
 import classes from "./ProblemDescription.module.css";
 import Label from "../../UI/Label/Label";
+import { Link } from "react-router-dom";
 
 class ProblemDescription extends Component {
     static contextType = ProblemContext;
@@ -34,7 +35,7 @@ class ProblemDescription extends Component {
 
             const tags = problem.tags.split(",").map((tag) => (
                 <Label key={tag} type="inline">
-                    {tag}
+                    <Link to='/'>{tag}</Link>
                 </Label>
             ));
 
