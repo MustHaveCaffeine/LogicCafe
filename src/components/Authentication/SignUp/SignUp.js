@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import WithClass from "../../../hoc/WithClass/WithClass";
-import { Grid, Image, Form, Input, Button, Header } from "semantic-ui-react";
+import { Grid, Image, Form, Input } from "semantic-ui-react";
 import classes from "./SignUp.module.css";
-import image from "../../../assets/images/back_image.png";
+import image from "../../../assets/images/logo_with_text.png";
+import Button from "../../UI/Button/Button";
 
 class SignUp extends Component {
     state = {
@@ -97,35 +98,23 @@ class SignUp extends Component {
                 <Grid>
                     <Grid.Column computer='8' only='computer'>
                         <Grid.Row verticalAlign='middle'>
-                            <Image src={image} size='massive' centered />
+                            <Image src={image} size='medium' centered />
                         </Grid.Row>
                     </Grid.Column>
                     <Grid.Column mobile='16' computer='8'>
-                        <Header as='h2' textAlign='center'>
+                        <h2 style={{textAlign: 'center'}}>
                             Create an Account
-                        </Header>
+                        </h2>
                         <Form>
                             {formFields}
                             <Grid centered>
                                 <Grid.Row>
-                                    <Button
-                                        type='submit'
-                                        color='teal'
-                                        floated='right'>
-                                        Sign Up
-                                    </Button>
+                                    <Button size='large'>Sign Up</Button>
                                 </Grid.Row>
                                 <Grid.Row>
                                     <p>Already have an account ? Sign In</p>
                                 </Grid.Row>
                             </Grid>
-
-                            {/* <Button
-                                type='submit'
-                                color='teal'
-                                attached="bottom" >
-                                Already have an account ? Sign In
-                            </Button> */}
                         </Form>
                     </Grid.Column>
                 </Grid>
