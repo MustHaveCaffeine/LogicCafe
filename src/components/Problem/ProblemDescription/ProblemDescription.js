@@ -5,10 +5,10 @@ import {
     Dimmer,
     Loader,
     Segment,
-    Label,
 } from "semantic-ui-react";
 import { ProblemContext } from "../../../providers/ProblemProvider/ProblemProvider";
 import classes from "./ProblemDescription.module.css";
+import Label from "../../UI/Label/Label";
 
 class ProblemDescription extends Component {
     static contextType = ProblemContext;
@@ -33,7 +33,7 @@ class ProblemDescription extends Component {
             );
 
             const tags = problem.tags.split(",").map((tag) => (
-                <Label as='a' color='teal' key={tag}>
+                <Label key={tag} type="inline">
                     {tag}
                 </Label>
             ));
@@ -59,14 +59,14 @@ class ProblemDescription extends Component {
                     <Divider />
                     {problem.description}
                     <Divider />
-                    <div className={classes.Headers}>
+                    <div className={classes.Label}>
                         <p>Contributor</p>
-                        <p>{problem.author}</p>
+                        <p style={{fontWeight: 600}}>{problem.author}</p>
                     </div>
                     <Divider />
-                    <div className={classes.Headers}>
+                    <div>
                         <p>Related Topics</p>
-                        <Label.Group circular>{tags}</Label.Group>
+                        {tags}
                     </div>
                 </Fragment>
             );

@@ -109,9 +109,7 @@ class SignUp extends Component {
                             {formFields}
                             <Grid centered>
                                 <Grid.Row>
-                                    <Button btnType='primary' size='large'>
-                                        Sign Up
-                                    </Button>
+                                    <Button size='large'>Sign Up</Button>
                                 </Grid.Row>
                                 <Grid.Row>
                                     <p>Already have an account ? Sign In</p>

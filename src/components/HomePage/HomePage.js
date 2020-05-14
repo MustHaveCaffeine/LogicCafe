@@ -38,7 +38,6 @@ const homepage = ({ history }) => {
                                 Start Practice
                             </Button> */}
                             <Button
-                                btnType="primary"
                                 onClick={routeToProblemList}
                                 size="large"
                                 >
