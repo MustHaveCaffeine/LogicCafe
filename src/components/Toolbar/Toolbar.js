@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router-dom";
-import { Dropdown, Menu } from "semantic-ui-react";
+import { Dropdown, Menu, Image } from "semantic-ui-react";
 import classes from "./Toolbar.module.css";
+import logo from '../../assets/images/logo_without_text.png'
 
 class Toolbar extends Component {
     state = { activeItem: "home" };
@@ -16,7 +17,7 @@ class Toolbar extends Component {
         }
     };
 
-    handleItemClick = (e, { name }) => {
+    handleItemClick = (e, name ) => {
         this.props.history.push("/" + name);
     };
 
@@ -33,15 +34,29 @@ class Toolbar extends Component {
             <Fragment>
                 <div className={classes.Toolbar}>
                     <Menu secondary>
-                        <Menu.Item
+                        <Menu.Item header 
                             name='home'
-                            active={activeItem === "home"}
-                            onClick={this.handleItemClick}
-                        />
+                            onClick={event => this.handleItemClick(event, "home")}>
+                                <h3 style={{color:"#F08700"}}>Logic Cafe</h3>
+                                {/* <Image src={logo} centered size="mini" />  */}
+                            </Menu.Item>
                         <Menu.Item
                             name='problems'
                             active={activeItem === "problems"}
-                            onClick={this.handleItemClick}
+                            onClick={event => this.handleItemClick(event, "problems")}
+                        />
+                        <Menu.Item
+                            name='articles'
+                            active={activeItem === "articles"}
+                        />
+                        <Menu.Item
+                            name='discussions'
+                            active={activeItem === "discussions"}
+                        />
+                        <Menu.Item
+                            name='publish'
+                            active={activeItem === "publish"}
+                            onClick={event => this.handleItemClick(event, "problems/publish")}
                         />
                         <Menu.Menu position='right'>
                             <Dropdown item icon='bars' simple>

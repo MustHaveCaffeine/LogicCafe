@@ -6,7 +6,7 @@ import WithClass from "../../hoc/WithClass/WithClass";
 const footer = (props) => {
     return (
         <WithClass classes={classes.Margin}>
-            <Divider />
+            {/* <Divider /> */}
             <div className={classes.FooterWrapper}>
                 <Menu text>
                     <Menu.Item header>Copyright © 2020 LogiCafe</Menu.Item>
