@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from "react";
 import {
     Divider,
-    Header,
     Dimmer,
     Loader,
     Segment,
-    Label,
 } from "semantic-ui-react";
 import { ProblemContext } from "../../../providers/ProblemProvider/ProblemProvider";
 import classes from "./ProblemDescription.module.css";
+import Label from "../../UI/Label/Label";
+import { Link } from "react-router-dom";
 
 class ProblemDescription extends Component {
     static contextType = ProblemContext;
@@ -25,48 +25,47 @@ class ProblemDescription extends Component {
         if (problem && problem.description && problem.tags) {
             console.log(problem);
             const problemDifficulty = (
-                <Header
-                    as='h5'
+                <h5
                     color={this.difficultyColorMap[problem.difficulty]}>
                     {problem.difficulty}
-                </Header>
+                </h5>
             );
 
             const tags = problem.tags.split(",").map((tag) => (
-                <Label as='a' color='teal' key={tag}>
-                    {tag}
+                <Label key={tag} type="inline">
+                    <Link to='/'>{tag}</Link>
                 </Label>
             ));
 
             return (
                 <Fragment>
-                    <Header as='h3'>{problem.id + ". " + problem.title}</Header>
+                    <h3>{problem.id + ". " + problem.title}</h3>
                     <div className={classes.Headers}>
                         <div>{problemDifficulty}</div>
                         <div>
-                            <Header as='h6'>3366</Header>
+                            <h6>3366</h6>
                         </div>
                         <div>
-                            <Header as='h6'>379</Header>
+                            <h6>379</h6>
                         </div>
                         <div>
-                            <Header as='h6'>Add to List</Header>
+                            <h6>Add to List</h6>
                         </div>
                         <div>
-                            <Header as='h6'>Share</Header>
+                            <h6>Share</h6>
                         </div>
                     </div>
                     <Divider />
                     {problem.description}
                     <Divider />
-                    <div className={classes.Headers}>
+                    <div className={classes.Label}>
                         <p>Contributor</p>
-                        <p>{problem.author}</p>
+                        <p style={{fontWeight: 600}}>{problem.author}</p>
                     </div>
                     <Divider />
-                    <div className={classes.Headers}>
+                    <div>
                         <p>Related Topics</p>
-                        <Label.Group circular>{tags}</Label.Group>
+                        {tags}
                     </div>
                 </Fragment>
             );
