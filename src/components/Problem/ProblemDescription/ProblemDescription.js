@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import {
     Divider,
-    Header,
     Dimmer,
     Loader,
     Segment,
@@ -26,11 +25,10 @@ class ProblemDescription extends Component {
         if (problem && problem.description && problem.tags) {
             console.log(problem);
             const problemDifficulty = (
-                <Header
-                    as='h5'
+                <h5
                     color={this.difficultyColorMap[problem.difficulty]}>
                     {problem.difficulty}
-                </Header>
+                </h5>
             );
 
             const tags = problem.tags.split(",").map((tag) => (
@@ -41,20 +39,20 @@ class ProblemDescription extends Component {
 
             return (
                 <Fragment>
-                    <Header as='h3'>{problem.id + ". " + problem.title}</Header>
+                    <h3>{problem.id + ". " + problem.title}</h3>
                     <div className={classes.Headers}>
                         <div>{problemDifficulty}</div>
                         <div>
-                            <Header as='h6'>3366</Header>
+                            <h6>3366</h6>
                         </div>
                         <div>
-                            <Header as='h6'>379</Header>
+                            <h6>379</h6>
                         </div>
                         <div>
-                            <Header as='h6'>Add to List</Header>
+                            <h6>Add to List</h6>
                         </div>
                         <div>
-                            <Header as='h6'>Share</Header>
+                            <h6>Share</h6>
                         </div>
                     </div>
                     <Divider />
