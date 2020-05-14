@@ -18,6 +18,10 @@ const Label = styled.label`
     &:hover {
         opacity: 1;
     }
+
+    a {
+        color: rgba(0, 0, 0, 0.6);
+    }
 `;
 
 Label.defaultProps = {
