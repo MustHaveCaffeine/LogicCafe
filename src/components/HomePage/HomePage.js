@@ -1,8 +1,9 @@
 import React from "react";
-import { Grid, Image, Header, Button } from "semantic-ui-react";
+import { Grid, Image, Header } from "semantic-ui-react";
 import classes from "./HomePage.module.css";
 import logo from "../../assets/images/logo_with_text.png";
 import { withRouter } from "react-router-dom";
+import Button from '../UI/Button/Button';
 
 const homepage = ({ history }) => {
     const dummyText = `“Reduced object rendering time by 75% by applying Floyd’s algorithm, leading to a 10% reduction in system boot time.”`;
@@ -26,8 +27,8 @@ const homepage = ({ history }) => {
                         </Header>
                         <Header as='h3'>{dummyText}</Header>
                         <Header as='h4'>{author}</Header>
-                        <div className={classes.Spacing}>
-                            <Button
+                        {/* <div className={classes.Spacing}> */}
+                            {/* <Button
                                 size='large'
                                 onClick={routeToProblemList}
                                 style={{
@@ -35,8 +36,15 @@ const homepage = ({ history }) => {
                                     color: "white",
                                 }}>
                                 Start Practice
+                            </Button> */}
+                            <Button
+                                btnType="primary"
+                                onClick={routeToProblemList}
+                                size="large"
+                                >
+                                Start Practice
                             </Button>
-                        </div>
+                        {/* </div> */}
                     </Grid.Column>
                     <Grid.Column>
                         <Image src={logo} centered />

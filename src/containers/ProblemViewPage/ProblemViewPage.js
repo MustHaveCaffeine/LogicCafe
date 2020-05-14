@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Grid, Tab, Button } from "semantic-ui-react";
+import { Grid, Tab } from "semantic-ui-react";
 import { ProblemProvider } from "../../providers/ProblemProvider/ProblemProvider";
 import classes from "./ProblemViewPage.module.css";
 import ProblemDescription from "../../components/Problem/ProblemDescription/ProblemDescription";
 import ProblemSubmissions from "../../components/Problem/ProblemSubmissions/ProblemSubmissions";
 import CodeEditor from "../../components/CodeEditor/CodeEditor";
 import axios from "../../axios-problem";
+import Button from "../../components/UI/Button/Button";
 
 class ProblemViewPage extends Component {
     panes = [
@@ -77,18 +78,15 @@ class ProblemViewPage extends Component {
                             <Tab panes={this.panes} />
                         </div>
                         <div className={classes.Margin}>
-                            <Button.Group>
-                                <Button color='teal'>Prev</Button>
-                                <Button.Or />
-                                <Button color='teal'>Next</Button>
-                            </Button.Group>
+                            <Button btnType='primary'>Prev</Button>
+                            <Button btnType='primary'>Next</Button>
                         </div>
                     </Grid.Column>
                     <Grid.Column>
                         <div className={classes.Headers}>
                             <div>
-                                <Button color='grey'>Run Code</Button>
-                                <Button color='teal'>Submit</Button>
+                                <Button btnType='secondary'>Run Code</Button>
+                                <Button btnType='primary'>Submit</Button>
                             </div>
                         </div>
                         <div className={classes.Margin}>

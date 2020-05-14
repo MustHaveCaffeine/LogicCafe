@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Header, Form, Checkbox, Button } from "semantic-ui-react";
+import { Header, Form, Checkbox } from "semantic-ui-react";
 import WithClass from "../../../hoc/WithClass/WithClass";
 import classes from "./ProblemPublish.module.css";
 import Input from "../../UI/Input/Input";
+import Button from "../../UI/Button/Button";
 
 const tags_options = [
     { key: "array", text: "Array", value: "Array" },
@@ -232,13 +233,12 @@ class ProblemPublish extends Component {
                     <Form.Field>
                         <Checkbox label='I agree to the Terms and Conditions' />
                     </Form.Field>
+                    <Button btnType='secondary'>Test Case Upload</Button>
                     <Button
-                        type='submit'
-                        disabled={!this.state.isProblemValid}
-                        color='teal'>
+                        btnType='primary'
+                        disabled={!this.state.isProblemValid}>
                         Submit
                     </Button>
-                    <Button color='grey'>Test Case Upload</Button>
                 </Form>
             </WithClass>
         );
