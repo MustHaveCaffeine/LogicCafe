@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, Image, Header, Button } from "semantic-ui-react";
 import classes from "./HomePage.module.css";
-import image from "../../assets/images/back_image.png";
 import logo from "../../assets/images/logo_with_text.png";
 import { withRouter } from "react-router-dom";
 
