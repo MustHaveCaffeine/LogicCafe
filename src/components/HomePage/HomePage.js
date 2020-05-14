@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Image, Header } from "semantic-ui-react";
+import { Grid, Image } from "semantic-ui-react";
 import classes from "./HomePage.module.css";
 import logo from "../../assets/images/logo_with_text.png";
 import { withRouter } from "react-router-dom";
@@ -22,11 +22,11 @@ const homepage = ({ history }) => {
             <div className={classes.Spacing}>
                 <Grid columns={2} padded>
                     <Grid.Column>
-                        <Header as='h2'>
+                        <h2>
                             Get Started with Algorithms today!
-                        </Header>
-                        <Header as='h3'>{dummyText}</Header>
-                        <Header as='h4'>{author}</Header>
+                        </h2>
+                        <h3>{dummyText}</h3>
+                        <h4>{author}</h4>
                         {/* <div className={classes.Spacing}> */}
                             {/* <Button
                                 size='large'

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import WithClass from "../../../hoc/WithClass/WithClass";
-import { Grid, Image, Form, Input, Header } from "semantic-ui-react";
+import { Grid, Image, Form, Input } from "semantic-ui-react";
 import classes from "./SignUp.module.css";
 import image from "../../../assets/images/logo_with_text.png";
 import Button from "../../UI/Button/Button";
@@ -102,9 +102,9 @@ class SignUp extends Component {
                         </Grid.Row>
                     </Grid.Column>
                     <Grid.Column mobile='16' computer='8'>
-                        <Header as='h2' textAlign='center'>
+                        <h2 style={{textAlign: 'center'}}>
                             Create an Account
-                        </Header>
+                        </h2>
                         <Form>
                             {formFields}
                             <Grid centered>

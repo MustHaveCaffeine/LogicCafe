@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Header, Form, Checkbox } from "semantic-ui-react";
+import { Form, Checkbox } from "semantic-ui-react";
 import WithClass from "../../../hoc/WithClass/WithClass";
 import classes from "./ProblemPublish.module.css";
 import Input from "../../UI/Input/Input";
@@ -205,7 +205,7 @@ class ProblemPublish extends Component {
 
         return (
             <WithClass classes={classes.Margin}>
-                <Header as='h2'>Create Problem</Header>
+                <h2>Create Problem</h2>
                 <Form>
                     {formElementArray.map((formElement) => (
                         <Form.Field key={formElement.id}>
