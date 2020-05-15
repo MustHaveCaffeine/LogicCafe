@@ -42,7 +42,6 @@ class ProblemViewPage extends Component {
             .then((response) => {
                 Object.assign(problem, response.data);
                 this.setState({ problem });
-                // console.log(this.state);
             })
             .catch((error) => {
                 this.setState({ error: error.message });
@@ -53,7 +52,6 @@ class ProblemViewPage extends Component {
             .then((response) => {
                 Object.assign(problem, response.data);
                 this.setState({ problem });
-                // console.log(this.state);
             })
             .catch((error) => {
                 this.setState({ error: error.message });
@@ -66,7 +64,7 @@ class ProblemViewPage extends Component {
     };
 
     changeCode = (value) => {
-        this.setState({ code: value });
+        this.code = value;
     };
 
     render() {
@@ -83,12 +81,6 @@ class ProblemViewPage extends Component {
                         </div>
                     </Grid.Column>
                     <Grid.Column>
-                        <div className={classes.Headers}>
-                            <div>
-                                <Button btnType='secondary'>Run Code</Button>
-                                <Button>Submit</Button>
-                            </div>
-                        </div>
                         <div className={classes.Margin}>
                             <CodeEditor
                                 onChange={this.changeCode}
