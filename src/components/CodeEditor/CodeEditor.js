@@ -57,7 +57,10 @@ class CodeEditor extends Component {
                     onChange={this.changeLanguage}
                     value={this.state.selectedLanguage}
                 />
-                <AceEditor {...editorProps} />
+                <AceEditor
+                    {...editorProps}
+                    style={{ marginTop: "10px", border: "1px solid #ddd" }}
+                />
             </Fragment>
         );
     }
