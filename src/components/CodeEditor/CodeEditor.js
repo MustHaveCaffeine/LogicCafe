@@ -27,12 +27,13 @@ class CodeEditor extends Component {
     };
 
     changeLanguage = (_, data) => {
-        this.setState({ selectedLanguage: data.value });
+        this.code = data.value;
     };
 
     render() {
         const editorProps = {
             width: "100%",
+            height: "350px",
             theme: "xcode",
             mode: this.props.language,
             onChange: this.props.onChange,
