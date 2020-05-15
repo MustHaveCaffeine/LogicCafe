@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { Dropdown } from "semantic-ui-react";
 import AceEditor from "react-ace";
+import WithClass from "../../hoc/WithClass/WithClass";
+import Button from "../UI/Button/Button";
 
 const languages = [
     { key: 1, text: "Java", value: "java" },
@@ -50,13 +52,21 @@ class CodeEditor extends Component {
 
         return (
             <Fragment>
-                <Dropdown
-                    search
-                    selection
-                    options={languages}
-                    onChange={this.changeLanguage}
-                    value={this.state.selectedLanguage}
-                />
+                <WithClass>
+                    <Dropdown
+                        search
+                        selection
+                        options={languages}
+                        onChange={this.changeLanguage}
+                        value={this.state.selectedLanguage}
+                    />
+                    <Button float='right' margin='none'>
+                        Submit
+                    </Button>
+                    <Button btnType='secondary' float='right' margin='none'>
+                        Run Code
+                    </Button>
+                </WithClass>
                 <AceEditor
                     {...editorProps}
                     style={{ marginTop: "10px", border: "1px solid #ddd" }}
