@@ -5,7 +5,7 @@ name: Build Workflow
 
 on:
   push:
-    branches: [ stage, dev-ajay, dev_akshat ]
+    branches: [ stage ]
   pull_request:
     branches: [ master, stage ]
 
