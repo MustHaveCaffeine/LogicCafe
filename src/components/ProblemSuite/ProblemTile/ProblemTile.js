@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
-import WithClass from "../../hoc/WithClass";
+import WithClass from "../../../hoc/WithClass/WithClass";
 import classes from "./ProblemTile.module.css";
 import { Link } from "react-router-dom";
 
@@ -9,13 +9,21 @@ const problemTile = (props) => {
         <WithClass classes={classes.Basic}>
             <Grid>
                 <Grid.Column textAlign='right' width={1}>
-                    {props.id}
+                    <p style={{ color: "#FFCF44", fontWeight: 600 }}>
+                        {props.id}
+                    </p>
                 </Grid.Column>
                 <Grid.Column textAlign='left' width={12}>
-                    <Link to={`/problems/${props.id}`}>{props.title}</Link>
+                    <Link
+                        style={{ color: "#F08700", fontWeight: 600 }}
+                        to={`/problems/${props.id}`}>
+                        {props.title}
+                    </Link>
                 </Grid.Column>
                 <Grid.Column textAlign='center' width={2}>
-                    {props.difficulty}
+                    <p style={{ color: "#FFCF44", fontWeight: 600 }}>
+                        {props.difficulty}
+                    </p>
                 </Grid.Column>
             </Grid>
         </WithClass>

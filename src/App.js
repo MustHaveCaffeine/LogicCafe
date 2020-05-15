@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import Layout from "./components/Layout/Layout";
+import Layout from "./containers/Layout/Layout";
 import HomePage from "./components/HomePage/HomePage";
-import ProblemsPage from "./components/ProblemsPage/ProblemsPage";
+import ProblemsPage from "./containers/ProblemsPage/ProblemsPage";
 import { Switch, Route } from "react-router-dom";
-import ProblemViewPage from "./components/ProblemViewPage/ProblemViewPage";
-import ProblemPublish from "./components/ProblemPublish/ProblemPublish";
+import ProblemViewPage from "./containers/ProblemViewPage/ProblemViewPage";
+import ProblemPublish from "./components/Publish/ProblemPublish/ProblemPublish";
+import SignUp from './components/Authentication/SignUp/SignUp';
 
 class App extends Component {
     render() {
@@ -12,10 +13,11 @@ class App extends Component {
             <Layout>
                 <Switch>
                     <Route path='/' exact component={HomePage} />
+                    <Route path='/signup' exact component={SignUp} />
                     <Route path='/home' component={HomePage} />
                     <Route path='/problems' exact component={ProblemsPage} />
                     <Route
-                        path='/problems/create-problem'
+                        path='/problems/publish'
                         exact
                         component={ProblemPublish}
                     />

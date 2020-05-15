@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ProblemsListComponent from "../ProblemsListComponent/ProblemsListComponent";
+import ProblemsListComponent from "../../components/ProblemSuite/ProblemsListComponent/ProblemsListComponent";
 
 const secretKey =
     "$2a$10$EyNAXYyl3fqSU9jMcZrIUOTr8bizEq/i8ztxTAJec3owv71oomVTy";
