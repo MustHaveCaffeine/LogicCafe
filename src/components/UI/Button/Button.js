@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 const Button = styled.button`
     font-size: ${(props) => (props.size === "small" ? "15px" : "20px")};
-    margin: 5px;
+    margin: ${(props) => (props.margin === "none" ? "0px" : "5px")};
     padding: 10px 20px;
     font-weight: 700;
     box-shadow: none;
+    float: ${(props) => (props.float === "right" ? "right" : "none")};
     outline: none;
     opacity: ${(props) => (props.disabled ? 0.25 : 1)};
     border: 2px solid
@@ -26,6 +27,8 @@ const Button = styled.button`
 Button.defaultProps = {
     btnType: "primary",
     size: "small",
+    float: "none",
+    margin: "5px",
 };
 
 export default Button;
