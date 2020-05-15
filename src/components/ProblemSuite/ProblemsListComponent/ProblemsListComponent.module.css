@@ -4,8 +4,9 @@
 }
 
 .Back {
-    background-color: #404040;
-    margin-bottom: 5px;
+    background-color: black;
+    color: #F08700;
+    margin-bottom: 20px;
 }
 
 .Pager {

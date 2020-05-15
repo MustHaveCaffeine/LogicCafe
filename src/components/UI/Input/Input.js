@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Dropdown } from "semantic-ui-react";
-import WithClass from "../../../hoc/WithClass";
+import WithClass from "../../../hoc/WithClass/WithClass";
 import classes from "./Input.module.css";
 
 const input = (props) => {

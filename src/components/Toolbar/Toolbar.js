@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router-dom";
-import { Dropdown, Menu } from "semantic-ui-react";
+import { Dropdown, Menu, Image } from "semantic-ui-react";
 import classes from "./Toolbar.module.css";
+import logo from "../../assets/images/logo_without_text.png";
 
 class Toolbar extends Component {
     state = { activeItem: "home" };
 
     componentDidMount = () => {
-        this.onRouteChange();
+        // this.onRouteChange();
     };
 
     componentDidUpdate = (prevProps) => {
@@ -16,8 +17,9 @@ class Toolbar extends Component {
         }
     };
 
-    handleItemClick = (e, { name }) => {
-        this.props.history.push("/" + name);
+    handleItemClick = (e, route, name) => {
+        this.props.history.push("/" + route);
+        this.setState({ activeItem: name });
     };
 
     onRouteChange = () => {
@@ -34,17 +36,73 @@ class Toolbar extends Component {
                 <div className={classes.Toolbar}>
                     <Menu secondary>
                         <Menu.Item
+                            header
                             name='home'
-                            active={activeItem === "home"}
-                            onClick={this.handleItemClick}
-                        />
+                            onClick={(event) =>
+                                this.handleItemClick(event, "home", "home")
+                            }>
+                            <Image src={logo} centered size='mini' />
+                            <span
+                                style={{
+                                    color: "#F08700",
+                                    fontSize: "20px",
+                                    marginLeft: "5px",
+                                }}>
+                                Logic Cafe
+                            </span>
+                        </Menu.Item>
                         <Menu.Item
                             name='problems'
+                            style={{
+                                color: "#F5A322",
+                                fontWeight:
+                                    activeItem === "problems" ? 900 : 400,
+                                fontSize: "15px",
+                            }}
                             active={activeItem === "problems"}
-                            onClick={this.handleItemClick}
+                            onClick={(event) =>
+                                this.handleItemClick(event, "problems", "problems")
+                            }
+                        />
+                        <Menu.Item
+                            name='articles'
+                            style={{
+                                color: "#F5A322",
+                                fontWeight:
+                                    activeItem === "articles" ? 900 : 400,
+                                fontSize: "15px",
+                            }}
+                            active={activeItem === "articles"}
+                        />
+                        <Menu.Item
+                            name='discussions'
+                            style={{
+                                color: "#F5A322",
+                                fontWeight:
+                                    activeItem === "discussions" ? 900 : 400,
+                                fontSize: "15px",
+                            }}
+                            active={activeItem === "discussions"}
+                        />
+                        <Menu.Item
+                            name='publish'
+                            style={{
+                                color: "#F5A322",
+                                fontWeight:
+                                    activeItem === "publish" ? 900 : 400,
+                                fontSize: "15px",
+                            }}
+                            active={activeItem === "publish"}
+                            onClick={(event) =>
+                                this.handleItemClick(event, "problems/publish", "publish")
+                            }
                         />
                         <Menu.Menu position='right'>
-                            <Dropdown item icon='bars' simple>
+                            <Dropdown
+                                item
+                                icon='bars'
+                                simple
+                                style={{ color: "#F5A322", fontSize: "15px" }}>
                                 <Dropdown.Menu>
                                     <Dropdown.Item>
                                         My Submissions
