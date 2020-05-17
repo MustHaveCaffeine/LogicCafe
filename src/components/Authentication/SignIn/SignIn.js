@@ -1,29 +1,15 @@
 import React, { Component } from "react";
 import WithClass from "../../../hoc/WithClass/WithClass";
 import { Grid, Image, Form } from "semantic-ui-react";
-import classes from "./SignUp.module.css";
+import classes from "./SignIn.module.css";
 import image from "../../../assets/images/woman.jpg";
 import Button from "../../UI/Button/Button";
 import Input from "../../UI/Input/Input";
 import { Link } from "react-router-dom";
 
-class SignUp extends Component {
+class SignIn extends Component {
     state = {
         controls: {
-            name: {
-                label: "Name",
-                elementType: "input",
-                elementConfig: {
-                    type: "text",
-                    placeholder: "Name",
-                },
-                value: "",
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false,
-            },
             email: {
                 label: "Email",
                 elementType: "input",
@@ -54,27 +40,11 @@ class SignUp extends Component {
                 valid: false,
                 touched: false,
             },
-            confirm_password: {
-                label: "Confirm Password",
-                elementType: "input",
-                elementConfig: {
-                    type: "password",
-                    placeholder: "Re-enter Password",
-                },
-                value: "",
-                validation: {
-                    required: true,
-                    minLength: 6,
-                    passwordMatch: true,
-                },
-                valid: false,
-                touched: false,
-            },
         },
         isAuthValid: false,
     };
 
-    checkValidity = (value, rules, controls) => {
+    checkValidity = (value, rules) => {
         let isValid = true;
 
         if (rules.required) {
@@ -87,17 +57,7 @@ class SignUp extends Component {
             const pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
             isValid = pattern.test(value) && isValid;
         }
-        if (rules.passwordMatch) {
-            isValid = this.passwordMatchCheck(value, controls) && isValid;
-            console.log(isValid);
-        }
         return isValid;
-    };
-
-    passwordMatchCheck = (value, controls) => {
-        const password = controls["password"].value;
-        const rePassword = value;
-        return password === rePassword;
     };
 
     inputChangedHandler = (event, identifier) => {
@@ -110,8 +70,7 @@ class SignUp extends Component {
         updatedControl.value = event.target.value;
         updatedControl.valid = this.checkValidity(
             updatedControl.value,
-            updatedControl.validation,
-            updatedControlsForm
+            updatedControl.validation
         );
         updatedControl.touched = true;
         updatedControlsForm[identifier] = updatedControl;
@@ -120,11 +79,6 @@ class SignUp extends Component {
             authIsValid =
                 updatedControlsForm[inputIdentifier].valid && authIsValid;
         }
-        authIsValid =
-            this.passwordMatchCheck(
-                updatedControlsForm["confirm_password"].value,
-                updatedControlsForm
-            ) && authIsValid;
         this.setState({
             controls: updatedControlsForm,
             isAuthValid: authIsValid,
@@ -158,7 +112,7 @@ class SignUp extends Component {
         ));
 
         return (
-            <WithClass classes={classes.SignUp}>
+            <WithClass classes={classes.SignIn}>
                 <Grid>
                     <Grid.Column computer='8' only='computer'>
                         <Grid.Row verticalAlign='middle'>
@@ -167,7 +121,7 @@ class SignUp extends Component {
                     </Grid.Column>
                     <Grid.Column mobile='16' computer='8'>
                         <h2 style={{ textAlign: "center" }}>
-                            Create an Account
+                            Sign In
                         </h2>
                         <Form>
                             {formFields}
@@ -176,13 +130,13 @@ class SignUp extends Component {
                                     <Button
                                         size='large'
                                         disabled={!this.state.isAuthValid}>
-                                        Sign Up
+                                        Sign In
                                     </Button>
                                 </Grid.Row>
                                 <Grid.Row>
                                     <p>
-                                        Already have an account ?{" "}
-                                        <Link to='/signin'>Sign In</Link>
+                                        Don't have an account ?{" "}
+                                        <Link to='/signup'>Sign Up</Link>
                                     </p>
                                 </Grid.Row>
                             </Grid>
@@ -194,4 +148,4 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+export default SignIn;
