@@ -8,7 +8,7 @@ class Toolbar extends Component {
     state = { activeItem: "home" };
 
     componentDidMount = () => {
-        // this.onRouteChange();
+        this.onRouteChange();
     };
 
     componentDidUpdate = (prevProps) => {
@@ -23,8 +23,9 @@ class Toolbar extends Component {
     };
 
     onRouteChange = () => {
-        const pathname =
+        let pathname =
             this.props.location.pathname.replace(/^(\/)/g, "") || "home";
+        pathname  = pathname === "problems/publish" ? "publish" : pathname;
         this.setState({ activeItem: pathname });
     };
 
@@ -61,7 +62,11 @@ class Toolbar extends Component {
                             }}
                             active={activeItem === "problems"}
                             onClick={(event) =>
-                                this.handleItemClick(event, "problems", "problems")
+                                this.handleItemClick(
+                                    event,
+                                    "problems",
+                                    "problems"
+                                )
                             }
                         />
                         <Menu.Item
@@ -94,10 +99,31 @@ class Toolbar extends Component {
                             }}
                             active={activeItem === "publish"}
                             onClick={(event) =>
-                                this.handleItemClick(event, "problems/publish", "publish")
+                                this.handleItemClick(
+                                    event,
+                                    "problems/publish",
+                                    "publish"
+                                )
                             }
                         />
                         <Menu.Menu position='right'>
+                            <Menu.Item
+                                name='signup'
+                                style={{
+                                    color: "#F5A322",
+                                    fontWeight:
+                                        activeItem === "signup" ? 900 : 400,
+                                    fontSize: "15px",
+                                }}
+                                active={activeItem === "signup"}
+                                onClick={(event) =>
+                                    this.handleItemClick(
+                                        event,
+                                        "signup",
+                                        "signup"
+                                    )
+                                }
+                            />
                             <Dropdown
                                 item
                                 icon='bars'
