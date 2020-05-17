@@ -5,7 +5,8 @@ import ProblemsPage from "./containers/ProblemsPage/ProblemsPage";
 import { Switch, Route } from "react-router-dom";
 import ProblemViewPage from "./containers/ProblemViewPage/ProblemViewPage";
 import ProblemPublish from "./components/Publish/ProblemPublish/ProblemPublish";
-import SignUp from './components/Authentication/SignUp/SignUp';
+import SignUp from "./components/Authentication/SignUp/SignUp";
+import SignIn from "./components/Authentication/SignIn/SignIn";
 
 class App extends Component {
     render() {
@@ -14,6 +15,7 @@ class App extends Component {
                 <Switch>
                     <Route path='/' exact component={HomePage} />
                     <Route path='/signup' exact component={SignUp} />
+                    <Route path='/signin' exact component={SignIn} />
                     <Route path='/home' component={HomePage} />
                     <Route path='/problems' exact component={ProblemsPage} />
                     <Route
