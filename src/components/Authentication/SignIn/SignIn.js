@@ -20,7 +20,7 @@ class SignIn extends Component {
                 value: "",
                 validation: {
                     required: true,
-                    isEmail: false,
+                    isEmail: true,
                 },
                 valid: false,
                 touched: false,
@@ -54,7 +54,7 @@ class SignIn extends Component {
             isValid = value.length >= rules.minLength && isValid;
         }
         if (rules.isEmail) {
-            const pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
             isValid = pattern.test(value) && isValid;
         }
         return isValid;
