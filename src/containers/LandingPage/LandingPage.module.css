@@ -1,11 +1,8 @@
 .LandingPage {
     position: relative;
-    background: #000;
-    height: 1200px;
-}
-
-.Sizing {
-    width: 80%;
+    color: #fff;
+    font-family: Roboto;
+    margin: 0 5%;
 }
 
 .LogoBox {
@@ -16,30 +13,21 @@
     top: 24px;
 }
 
+.BrandingContainer {
+    display: table;
+}
+
+.BrandingContainer > * {
+    display: table-cell;
+}
+
 .Logo {
-    position: absolute;
-    width: 42px;
-    height: 35px;
-    left: 70px;
-    top: 20px;
+    width: 45px;
 }
 
 .LogoText {
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 0%;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 120.4%;
-    display: flex;
-    align-items: center;
-    text-align: center;
     letter-spacing: 0.1em;
-    color: #ffffff;
+    margin: 0;
 }
 
 .MainBox {
@@ -51,11 +39,6 @@
 }
 
 .MainHeading {
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 0%;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -66,14 +49,11 @@
 }
 
 .MainImage {
-    position: absolute;
     width: 403px;
     height: 452px;
-    left: 651px;
-    top: 101px;
 }
 
-.ProblemBox {
+/* .ProblemBox {
     position: absolute;
     width: 128px;
     height: 49px;
@@ -119,7 +99,7 @@
     line-height: 28px;
     text-align: center;
     color: #dddddd;
-}
+} */
 
 .LoginBox {
     position: absolute;
@@ -174,29 +154,17 @@
 }
 
 .ProfileBox {
-    position: absolute;
-    width: 399px;
-    height: 143px;
-    left: 78px;
-    top: 751px;
+    width: 400px;
+    height: 150px;
 }
 
 .ProfilePic {
-    position: absolute;
-    width: 35%;
-    height: 100%;
-    left: 0%;
-    top: 0%;
-    border-radius: 200px;
+    width: 100%;
+    height: 140%;
+    border-radius: 100%;
 }
 
 .ProfileText {
-    position: absolute;
-    width: 50%;
-    height: 20%;
-    left: 40%;
-    top: 30%;
-
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
@@ -209,15 +177,11 @@
     letter-spacing: 0.1em;
 
     color: #ffffff;
+
+    margin: 0;
 }
 
 .ProfileType {
-    position: absolute;
-    width: 60%;
-    height: 50%;
-    left: 40%;
-    top: 50%;
-
     font-family: Roboto Mono;
     font-style: normal;
     font-weight: bold;
@@ -228,16 +192,29 @@
     display: flex;
     align-items: center;
     letter-spacing: 0.1em;
-
     color: #cfcfcf;
+
+    margin: 0;
 }
 
 .MessageBox {
+    position: relative;
+    margin: 20px;
+}
+
+.MessageBox ::after {
+    content: '"';
+    display: inline-block;
     position: absolute;
-    width: 553px;
-    height: 247px;
-    left: 501px;
-    top: 682px;
+    right: 0;
+    bottom: 0;
+}
+.MessageBox ::before {
+    content: '"';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .MessageLastQuote {
@@ -283,12 +260,6 @@
 }
 
 .Message {
-    position: absolute;
-    width: 80%;
-    height: 90%;
-    left: 8%;
-    top: 6%;
-
     font-family: Reenie Beanie;
     font-style: normal;
     font-weight: 500;
@@ -299,28 +270,16 @@
     display: flex;
     align-items: center;
     letter-spacing: 0.1em;
-
+    padding: 20px;
     color: #ffffff;
 }
 
-.Line {
-    position: absolute;
-    width: 974px;
-    height: 0px;
-    left: 80px;
-    top: 1045px;
-
+.FooterBorder {
     border: 1px solid #ffffff;
-    transform: rotate(-0.18deg);
+    width: 100%;
 }
 
 .Copyright {
-    position: absolute;
-    width: 315px;
-    height: 22px;
-    left: 80px;
-    top: 1059px;
-
     font-family: Roboto;
     font-style: normal;
     font-weight: bold;
@@ -342,64 +301,18 @@
     top: 1059px;
 }
 
-.Aboutus {
-    position: absolute;
-    width: 30%;
-    height: 100%;
-    left: 0%;
-    top: 0%;
-
+.FooterLink {
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
     line-height: 120.4%;
 
-    display: flex;
-    align-items: center;
     letter-spacing: 0.1em;
 
     color: #dddddd;
-}
-
-.Contact {
-    position: absolute;
-    width: 25%;
-    height: 100%;
-    left: 45%;
-    top: 0%;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 120.4%;
-
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.1em;
-
-    color: #dddddd;
-}
-
-.Help {
-    position: absolute;
-    width: 15%;
-    height: 100%;
-    left: 85%;
-    top: 0%;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 120.4%;
-
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.1em;
-
-    color: #dddddd;
+    margin: 20px;
+    display: inline-block;
 }
 
 .MadeBox {
@@ -411,12 +324,6 @@
 }
 
 .MadeWith {
-    position: absolute;
-    width: 38%;
-    height: 100%;
-    left: 0%;
-    top: 0%;
-
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -431,12 +338,6 @@
 }
 
 .InIndia {
-    position: absolute;
-    width: 30%;
-    height: 100%;
-    left: 55%;
-    top: 0%;
-
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -451,17 +352,46 @@
 }
 
 .IndiaFlag {
-    position: absolute;
-    width: 10%;
-    height: 100%;
-    left: 85%;
-    top: 0%;
+    width: 10px;
 }
 
 .Love {
-    position: absolute;
-    width: 11%;
-    height: 100%;
-    left: 41%;
-    top: 0%;
+    width: 10px;
+}
+
+.FooterInlineImage {
+    width: 40px;
+    padding: 0 5px;
+}
+
+.NavBarMenuItem {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    margin: 10px;
+}
+
+.NavBarMenuItemBordered {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 30px;
+    margin: 10px;
+    border: 3px solid #fff;
+}
+
+.ProfilePicDiv {
+    height: 130px;
+    width: 130px;
+    border-radius: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("profile-pic.jpg");
+}
+
+.MainPicDiv {
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-image: url("keyboard.jpg");
 }
