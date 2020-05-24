@@ -20,6 +20,7 @@ class SignUp extends Component {
                 value: "",
                 validation: {
                     required: true,
+                    isName: true,
                 },
                 valid: false,
                 touched: false,
@@ -79,6 +80,10 @@ class SignUp extends Component {
 
         if (rules.required) {
             isValid = value.trim() !== "" && isValid;
+        }
+        if (rules.isName) {
+            const pattern = /^[A-Za-z]+([ A-Za-z]+)*$/;
+            isValid = pattern.test(value) && isValid;
         }
         if (rules.minLength) {
             isValid = value.length >= rules.minLength && isValid;
