@@ -7,13 +7,14 @@ import ProblemViewPage from "./containers/ProblemViewPage/ProblemViewPage";
 import ProblemPublish from "./components/Publish/ProblemPublish/ProblemPublish";
 import SignUp from "./components/Authentication/SignUp/SignUp";
 import SignIn from "./components/Authentication/SignIn/SignIn";
+import LandingPage from "./containers/LandingPage/LandingPage";
 
 class App extends Component {
     render() {
         return (
             <Layout>
                 <Switch>
-                    <Route path='/' exact component={HomePage} />
+                    <Route path='/' exact component={LandingPage} />
                     <Route path='/signup' exact component={SignUp} />
                     <Route path='/signin' exact component={SignIn} />
                     <Route path='/home' component={HomePage} />
