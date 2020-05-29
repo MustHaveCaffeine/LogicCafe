@@ -1,19 +1,11 @@
 import React, { Component } from "react";
-import { Loader, Grid, Pagination } from "semantic-ui-react";
+import { Loader, Grid } from "semantic-ui-react";
 import ProblemTile from "../ProblemTile/ProblemTile";
 import classes from "./ProblemsListComponent.module.css";
 import WithClass from "../../../hoc/WithClass/WithClass";
 import TagBasedFilter from "../../TagBasedFilter/TagBasedFilter";
 
 class ProblemsListComponent extends Component {
-    state = {
-        activePage: 1,
-    };
-
-    handlePageChange = (e, pageInfo) => {
-        this.setState({ activePage: pageInfo.activePage });
-    };
-
     render() {
         const loading = this.props.problems.length === 0;
 
@@ -24,7 +16,8 @@ class ProblemsListComponent extends Component {
                 key={problemid}
                 id={problemid++}
                 title={prob.title}
-                difficulty='Easy'
+                difficulty={prob.level}
+                slug={prob.slug}
             />
         ));
 
@@ -53,13 +46,6 @@ class ProblemsListComponent extends Component {
                         <TagBasedFilter />
                     </Grid.Column>
                 </Grid>
-                <div className={classes.Pager}>
-                    <Pagination
-                        defaultActivePage={this.state.activePage}
-                        totalPages={29}
-                        onPageChange={this.handlePageChange}
-                    />
-                </div>
             </WithClass>
         );
     }
