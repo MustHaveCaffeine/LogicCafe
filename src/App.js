@@ -24,7 +24,7 @@ class App extends Component {
                         component={ProblemPublish}
                     />
                     <Route
-                        path='/problems/:id'
+                        path='/problems/:slug'
                         exact
                         component={ProblemViewPage}
                     />
