@@ -16,7 +16,7 @@ const problemTile = (props) => {
                 <Grid.Column textAlign='left' width={12}>
                     <Link
                         style={{ color: "#F08700", fontWeight: 600 }}
-                        to={`/problems/${props.id}`}>
+                        to={`/problems/${props.slug}`}>
                         {props.title}
                     </Link>
                 </Grid.Column>
