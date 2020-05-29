@@ -7,11 +7,9 @@ import TagBasedFilter from "../../TagBasedFilter/TagBasedFilter";
 
 class ProblemsListComponent extends Component {
     render() {
-        let problemid = 1;
         let problems = this.props.problems.map((prob) => (
             <ProblemTile
-                key={problemid}
-                id={problemid++}
+                key={prob.slug}
                 title={prob.title}
                 difficulty={prob.level}
                 slug={prob.slug}
