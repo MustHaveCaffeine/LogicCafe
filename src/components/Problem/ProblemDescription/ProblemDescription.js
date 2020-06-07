@@ -15,25 +15,28 @@ class ProblemDescription extends Component {
     static contextType = ProblemContext;
 
     difficultyColorMap = {
-        Medium: "orange",
-        Easy: "green",
-        Hard: "red",
+        MEDIUM: "orange",
+        EASY: "green",
+        HARD: "red",
     };
 
     render() {
+
+        console.log(this.context);
+
         const problem = this.context && this.context.problem;
 
         if (problem && problem.description && problem.tags) {
             console.log(problem);
             const problemDifficulty = (
                 <Header
-                    as='h5'
-                    color={this.difficultyColorMap[problem.difficulty]}>
-                    {problem.difficulty}
+                    as='h6'
+                    color={this.difficultyColorMap[problem.level]}>
+                    {problem.level}
                 </Header>
             );
 
-            const tags = problem.tags.split(",").map((tag) => (
+            const tags = problem.tags.map((tag) => (
                 <Label key={tag} type="inline">
                     <Link to='/'>{tag}</Link>
                 </Label>
@@ -41,7 +44,7 @@ class ProblemDescription extends Component {
 
             return (
                 <Fragment>
-                    <Header as='h3'>{problem.id + ". " + problem.title}</Header>
+                    <Header as="h3">{problem.title}</Header>
                     <div className={classes.Headers}>
                         <div>{problemDifficulty}</div>
                         <div>
@@ -62,7 +65,7 @@ class ProblemDescription extends Component {
                     <Divider />
                     <div className={classes.Label}>
                         <p>Contributor</p>
-                        <p style={{fontWeight: 600}}>{problem.author}</p>
+                        <p style={{fontWeight: 600}}>Logic Cafe</p>
                     </div>
                     <Divider />
                     <div>

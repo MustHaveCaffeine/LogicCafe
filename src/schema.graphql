@@ -1,0 +1,60 @@
+type Query {
+    user: User
+    problem(slug: String): Problem
+    problems: [Problem!]
+}
+
+type Mutation {
+    signin(authData: AuthRequest!): AuthResponse!
+    signup(authData: AuthRequest!): AuthResponse!
+    createProblem(problem: ProblemInput): Problem
+    submitSolution(problemSlug: String!, snippet: String!): Submission
+}
+
+type User {
+    firstName: String!
+    lastName: String
+    email: String!
+    # submisions: [Submission!]
+}
+
+type AuthResponse {
+    user: User!
+    token: String!
+}
+
+type Problem {
+    id: String!
+    slug: String!
+    title: String!
+    level: String!
+    tags: [String!]
+    # snippets: [CodeSnippet!]
+    description: String
+    submissions: [Submission!]
+}
+
+# type CodeSnippet {
+#   language: String!
+#   snippet: String!
+# }
+
+type Submission {
+    id: String!
+    # submitter: User!
+    snippet: String!
+    problem: Problem!
+}
+
+input AuthRequest {
+    email: String!
+    password: String!
+}
+
+input ProblemInput {
+    id: String
+    title: String!
+    level: String!
+    tags: [String!]
+    description: String
+}

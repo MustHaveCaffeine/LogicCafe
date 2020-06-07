@@ -1,31 +1,39 @@
 import React, { Component } from "react";
 import ProblemsListComponent from "../../components/ProblemSuite/ProblemsListComponent/ProblemsListComponent";
+import { QueryRenderer } from "react-relay";
+import environment from "../../Environment";
+import graphql from "babel-plugin-relay/macro";
 
-const secretKey =
-    "$2a$10$EyNAXYyl3fqSU9jMcZrIUOTr8bizEq/i8ztxTAJec3owv71oomVTy";
-
-const endPoints = {
-    problems: "https://api.jsonbin.io/b/5e91d31fcc62be4369c2d0f2",
-};
+const ProblemsPageQuery = graphql`
+    query ProblemsPageQuery {
+        problems{
+            title,
+            level,
+            slug
+        }
+    }
+`;
 
 class ProblemsPage extends Component {
-    state = { isFetching: true, problems: [] };
-
-    componentDidMount() {
-        fetch(endPoints.problems, {
-            headers: {
-                "secret-key": secretKey,
-            },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log("loaded");
-                this.setState({ isFetching: false, problems: data });
-            });
-    }
-
     render() {
-        return <ProblemsListComponent problems={this.state.problems} />;
+        return (
+            <QueryRenderer
+                environment={environment}
+                query={ProblemsPageQuery}
+                render={({ error, props }) => {
+                    if (error) {
+                        return <div>{error.message}</div>;
+                    } else if (props) {
+                        return (
+                            <ProblemsListComponent
+                                problems={props.problems}
+                            />
+                        );
+                    }
+                    return <div>Loading...</div>
+                }}
+            />
+        );
     }
 }
 

@@ -8,15 +8,10 @@ const problemTile = (props) => {
     return (
         <WithClass classes={classes.Basic}>
             <Grid>
-                <Grid.Column textAlign='right' width={1}>
-                    <p style={{ color: "#FFCF44", fontWeight: 600 }}>
-                        {props.id}
-                    </p>
-                </Grid.Column>
-                <Grid.Column textAlign='left' width={12}>
+                <Grid.Column textAlign='left' width={14}>
                     <Link
                         style={{ color: "#F08700", fontWeight: 600 }}
-                        to={`/problems/${props.id}`}>
+                        to={`/problems/${props.slug}`}>
                         {props.title}
                     </Link>
                 </Grid.Column>
